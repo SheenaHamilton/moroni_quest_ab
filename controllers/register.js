@@ -16,8 +16,8 @@ exports.submitRegistration = async (req, res) => {
             last_name: req.body.last_name,
             birthdate: req.body.birthdate,
             gender: req.body.gender,
-            youth_email: req.body.youth_email,
-            parent_email: req.body.parent_email || "",
+            email: req.body.email,
+            parent_email: type === "youth" ? (req.body.parent_email || "") : "",
             friend_request: req.body.friend_request || "",
 
             ward: req.body.ward,

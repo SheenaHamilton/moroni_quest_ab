@@ -25,6 +25,7 @@
 
         const youthSection = qs(".reg-card--youth", form);
         const leaderSection = qs(".reg-card--leader", form);
+        const parentEmailGroup = qs("#parent-email-group", form);
 
         const panels = {
             diet: qs("#diet-details", form),
@@ -105,9 +106,11 @@
 
             setHidden(youthSection, !isYouth);
             setHidden(leaderSection, !isLeader);
+            setHidden(parentEmailGroup, !isYouth);
 
             disableControlsInside(youthSection, !isYouth);
             disableControlsInside(leaderSection, !isLeader);
+            disableControlsInside(parentEmailGroup, !isYouth);
 
             if (resetOther) {
                 if (isYouth && leaderSection) resetValuesInside(leaderSection);

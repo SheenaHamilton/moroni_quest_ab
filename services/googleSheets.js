@@ -55,7 +55,7 @@ exports.appendRegistrationToSheet = async (doc) => {
         doc.ward || "",
         asISODate(doc.birthdate),
         doc.gender || "",
-        doc.youth_email || "",
+        doc.email || "",
         doc.parent_email || "",
         doc.friend_request || "",
 

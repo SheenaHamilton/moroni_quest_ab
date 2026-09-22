@@ -53,14 +53,15 @@ registerValidation.validateRegistration = () => {
             .notEmpty().withMessage("Participant Information: Gender is required.")
             .isIn(["male", "female"]).withMessage("Participant Information: Gender must be male or female."),
 
-        body("youth_email")
+        body("email")
             .trim()
-            .notEmpty().withMessage("Participant Information: Youth email is required.")
-            .isEmail().withMessage("Participant Information: Youth email must be a valid email address.")
+            .notEmpty().withMessage("Participant Information: Email is required.")
+            .isEmail().withMessage("Participant Information: Email must be a valid email address.")
             .bail()
             .normalizeEmail({ gmail_remove_dots: false }),
 
         body("parent_email")
+            .if((_, { req }) => isYouth(req))
             .optional({ checkFalsy: true })
             .trim()
             .isEmail().withMessage("Participant Information: Parent email must be a valid email address.")
