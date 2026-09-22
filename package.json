@@ -1,7 +1,7 @@
 {
     "name": "moroni_quest",
     "version": "1.0.0",
-    "description": "Event management API for Moroni's Quest - Sherwood Park Stake",
+    "description": "Event management API for Moroni's Quest - Tri-Stake",
     "main": "server.js",
     "scripts": {
         "test": "jest --runInBand",

@@ -91,19 +91,17 @@ registerValidation.validateRegistration = () => {
         //   .isIn(["AB"]).withMessage("Province must be AB.")
         //   .escape(),
 
-        // OPTION B: accept "Alberta" or "AB" (works with your current form value)
+        // OPTION B: accept "British Columbia" or "BC" (works with your current form value)
         body("address_province")
             .trim()
             .notEmpty().withMessage("Participant Information: Province is required.")
             .customSanitizer((v) => {
                 const s = String(v).trim().toLowerCase();
-                if (s === "alberta") return "AB";
-                if (s === "ab") return "AB";
-                if (s === "saskatchewan") return "SK";
-                if (s === "sk") return "SK";
+                if (s === "british columbia") return "BC";
+                if (s === "bc") return "BC";
                 return v;
             })
-            .isIn(["AB", "SK"]).withMessage("Participant Information: Province must be AB or SK."),
+            .isIn(["BC"]).withMessage("Participant Information: Province must be in BC."),
 
         body("address_postal")
             .trim()

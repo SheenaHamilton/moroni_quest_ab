@@ -13,9 +13,9 @@ const port = process.env.PORT || 3000;
 
 // Global template locals (available in every EJS view)
 app.locals.title = process.env.SITE_TITLE || "Moroni’s Quest";
-app.locals.description = process.env.SITE_DESC || "Moroni’s Quest — Sherwood Park Stake";
-app.locals.stake = process.env.STAKE_NAME || "Sherwood Park Stake";
-app.locals.campStartISO = process.env.CAMP_START_ISO || "2026-07-07T00:00:00-06:00";
+app.locals.description = process.env.SITE_DESC || "Moroni’s Quest — Tri-Stake";
+app.locals.stake = process.env.STAKE_NAME || "Abbotsford, Surrey, and Vancouver Stakes";
+app.locals.campStartISO = process.env.CAMP_START_ISO || "2027-09-01T00:00:00-06:00";
 
 app.use(cors({
     origin: process.env.CLIENT_URL, // if you need multiple origins, use a function here

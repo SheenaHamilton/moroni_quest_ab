@@ -52,12 +52,12 @@ exports.appendRegistrationToSheet = async (doc) => {
         // participant (shared)
         doc.first_name || "",
         doc.last_name || "",
+        doc.ward || "",
         asISODate(doc.birthdate),
         doc.gender || "",
         doc.youth_email || "",
         doc.parent_email || "",
         doc.friend_request || "",
-        doc.ward || "",
 
         doc.address_street || "",
         doc.address_city || "",

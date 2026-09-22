@@ -5,7 +5,7 @@ const doc = {
     info: {
         title: 'Moroni\'s Quest Application',
         description:
-            'API documentation for Moronis Quest event management system. Provides endpoints for youth and leader registration, Book of Mormon challenges, photo gallery, and inquiry management for the Sherwood Park, Alberta stake.',
+            'API documentation for Moronis Quest event management system. Provides endpoints for youth and leader registration, Book of Mormon challenges, photo gallery, and inquiry management for the Abbotsford, Surrey, and Vancouver stakes.',
         version: '1.0.0',
     },
     host: 'localhost:3000', // Change to 'moroni-quest.onrender.com' for production

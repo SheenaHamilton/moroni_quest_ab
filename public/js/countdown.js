@@ -6,7 +6,7 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  const startISO = window.CAMP_START_ISO || '2026-07-07T09:00:00-06:00';
+  const startISO = window.CAMP_START_ISO || '2027-09-01T09:00:00-06:00';
   const start = new Date(startISO).getTime();
 
   function pad(n) { return String(n).padStart(2, '0'); }

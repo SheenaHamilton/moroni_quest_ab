@@ -96,9 +96,9 @@ const getYouthByAge = async (req, res) => {
         const now = new Date();
         const currentYear = now.getFullYear();
 
-        // event date cutoff — July 5 of this year
-        const eventMonth = 6;
-        const eventDay = 5;
+        // event date cutoff — August 1 of this year
+        const eventMonth = 3;
+        const eventDay = 31;
 
         const maxBirthYear = currentYear - maxAge;
         const minBirthYear = currentYear - minAge;

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const WEEK1_START = new Date(2026, 3, 12); // Jan=0
+    const WEEK1_START = new Date(2027, 6, 1);
 
     const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
