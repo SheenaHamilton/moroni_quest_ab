@@ -1,0 +1,64 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main" class="page">
+  <section class="hero hero--inner">
+    <div class="overlay"></div>
+    <header class="center">
+      <h1>Registration Submitted</h1>
+      <p class="tagline">You’re all set.</p>
+    </header>
+  </section>
+
+    <!-- Registration details -->
+  <section id="registration" class="registration-success">
+    <div class="wrap">
+
+      <div class="reg-card reg-card--success">
+        <header>
+          <h2>Thank you!</h2>
+          <p>We’ve received your Moroni’s Quest registration.</p>
+        </header>
+        <div class="reg-shield-divider">
+          <span class="shield-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                    fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
+            </svg>
+          </span>
+        </div>
+        <% if (id) { %>
+          <div class="reg-success__id" role="status" aria-live="polite">
+            <p class="reg-success__label">Confirmation Number</p>
+            <p class="reg-success__value"><code><%= id %></code></p>
+            <p class="help-text">If you need to contact us about this registration, include this number, or use your email.</p>
+          </div>
+        <% } %>
+
+        <div class="reg-success__next">
+          <h3>Next steps</h3>
+          <ul class="checklist">
+            <li>Watch for updates and announcements.</li>
+            <li>Start planning your era outfit.</li>
+            <li>Join the Book of Mormon Challenge if you haven’t already.</li>
+          </ul>
+        </div>
+
+        <div class="reg-success__help">
+        <h3>
+            Have questions or need to update information? <a href="/inquiries" class="link"><b>Contact us</b></a>
+        </h3>
+        </div>
+
+        <div class="reg-success__actions">
+          <a class="btn btn--primary" href="/register#registration-form">Register Another Participant</a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>

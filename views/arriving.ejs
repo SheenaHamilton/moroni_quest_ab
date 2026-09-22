@@ -1,0 +1,204 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main" class="page page--arriving">
+
+  <section class="hero hero--inner hero--arriving">
+    <div class="overlay"></div>
+
+    <header class="center hero__content">
+      <h1>Getting There</h1>
+      <p class="tagline">We can’t wait to welcome you! 😁</p>
+
+      <div class="hero-actions">
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=Sara+%26+Eldon+Tanner+Youth+Camp%2C+5007+Lakeshore+Rd%2C+Wabamun%2C+AB+T0E+2K0&waypoints=5202+AB-16%2C+Fallis%2C+AB+T0E+0V0&travelmode=driving"
+          class="hero-btn"
+          target="_blank"
+          rel="noopener noreferrer">
+          Open Google Maps
+        </a>
+
+        <a href="#arrival-steps" class="hero-btn hero-btn--ghost">View Drop-Off Map</a>
+      </div>
+    </header>
+  </section>
+
+  <section class="arriving arriving-intro-section">
+    <div class="wrap">
+
+      <div class="arriving-intro">
+        <p class="arriving-kicker">Arrival Window</p>
+        <h2>Arrive Between 9:00–10:00 AM</h2>
+
+        <p class="arriving-kicker">Departure</p>
+        <h2>Pickup July 10 at 3:00 PM</h2>
+
+        <div class="reg-shield-divider">
+          <span class="shield-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                    fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <section class="arrival-reminders" aria-labelledby="arrival-reminders-title">
+
+        <div class="arrival-reminder-icons">
+          <article>
+            <div class="arrival-icon">
+              <img src="/img/costume.png" alt="" loading="lazy">
+            </div>
+            <h3>Come in Costume</h3>
+            <p>Youth and leaders should arrive wearing their Quest costume.</p>
+          </article>
+
+          <article>
+            <div class="arrival-icon">
+              <img src="/img/dropoff.png" alt="" loading="lazy">
+            </div>
+            <h3>Keep Drop-Off Brief</h3>
+            <p>Please say goodbyes before entering the drop-off zone so traffic can keep moving.</p>
+          </article>
+
+          <article>
+            <div class="arrival-icon">
+              <img src="/img/help.png" alt="" loading="lazy">
+            </div>
+            <h3>Need Extra Help?</h3>
+            <p>If your family needs extra drop-off support, please contact your tribe leaders ahead of time.</p>
+          </article>
+        </div>
+      </section> 
+
+    </div>
+  </section>
+  <section id="arrival-steps" class="arrival-block arrival-photo-block">
+    <div class="color-block"></div>
+
+    <div class="wrap">
+      <span class="section-tag">Start Here</span>
+      <h2>What to Do When You Arrive</h2>
+
+      <div class="arrival-content">
+
+        <div class="arrival-steps">
+          <article>
+            <span class="arrival-step-num">1</span>
+            <h3>Use the Google Maps route</h3>
+            <p>
+              The directions are set to guide traffic through the preferred arrival route.
+            </p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Sara+%26+Eldon+Tanner+Youth+Camp%2C+5007+Lakeshore+Rd%2C+Wabamun%2C+AB+T0E+2K0&waypoints=53.578204,-114.640720&travelmode=driving"
+              class="arrival-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Google Maps →
+            </a>
+          </article>
+
+          <article>
+            <span class="arrival-step-num">2</span>
+            <h3>Follow signs and volunteers</h3>
+            <p>
+              When you reach camp, follow the marked traffic flow and watch for the drop-off zone.
+            </p>
+          </article>
+
+          <article>
+            <span class="arrival-step-num">3</span>
+            <h3>Use the marked drop-off zone</h3>
+            <p>
+              The map shows where vehicles should stop briefly to unload youth and gear.
+            </p>
+          </article>
+
+          <article>
+            <span class="arrival-step-num">4</span>
+            <h3>Keep moving through the loop</h3>
+            <p>
+              After unloading, continue around the loop and exit as directed to help traffic keep flowing.
+            </p>
+          </article>
+        </div>
+
+        <div id="dropoff-map">
+          <figure class="arrival-map">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Sara+%26+Eldon+Tanner+Youth+Camp%2C+5007+Lakeshore+Rd%2C+Wabamun%2C+AB+T0E+2K0&waypoints=53.578204,-114.640720&travelmode=driving"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img
+                src="/img/Dropoff.jpg"
+                alt="Map showing the Moroni’s Quest arrival route, drop-off zone, and traffic flow"
+                loading="lazy">
+            </a>
+
+            <figcaption>
+              Tap the map to open Google Maps directions.
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="arriving">
+    <div class="wrap">
+
+      <section id="faq" class="arrival-block">
+        <span class="section-tag">Questions</span>
+        <h2>Arrival FAQ</h2>
+
+        <div class="arrival-faq">
+          <details>
+            <summary>What time should youth arrive?</summary>
+            <p>Youth should arrive between <strong>9:00–10:00 AM</strong>.</p>
+          </details>
+
+          <details>
+            <summary>What time is pickup?</summary>
+            <p>Youth will be ready for pickup on July 10 after <strong>3:00 PM</strong>.</p>
+          </details>
+
+          <details>
+            <summary>Should youth arrive in costume?</summary>
+            <p>Yes. Youth and leaders should arrive wearing their Quest costume.</p>
+          </details>
+
+          <details>
+            <summary>Where is the drop-off zone?</summary>
+            <p>The drop-off zone is marked on the map above. Please follow signs and volunteer directions when you arrive.</p>
+          </details>
+
+          <details>
+            <summary>Can we park and stay?</summary>
+            <p>Drop-off should be brief so traffic does not back up. Please follow volunteer directions if you need assistance.</p>
+          </details>
+
+          <details>
+            <summary>When should leaders arrive?</summary>
+            <p>Leaders are expected to arrive by <strong>7:30 AM on July 7</strong>, unless other arrangements have been made.</p>
+          </details>
+
+          <details>
+            <summary>Is the Moroni’s Quest location accessible?</summary>
+            <p>
+              Moroni’s Quest takes place primarily outdoors. Camp pathways and activity areas include
+              dirt and gravel paths, grassy terrain, and a limited number of paved walking roads. 
+            </p>
+          </details>
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>

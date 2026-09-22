@@ -1,0 +1,153 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" class="page">
+    <!-- Inner hero / page header -->
+    <section class="hero hero--inner hero--leaders">
+        <div class="overlay"></div>
+        <header class="center hero__content">
+        <h1>Leader Resources</h1>
+        <p class="tagline">Document References</p>
+        </header>
+    </section>
+
+
+    
+    <section class="leader-resources">
+    <div class="wrap">
+
+      <section class="leader-directory">
+        <div class="container">
+          <div class="leader-directory__grid">
+
+            <!-- Inquiries -->
+          <a href="/leaders/inquiries" class="leader-card">
+            <div class="leader-card__icon">📥</div>
+            <div class="leader-card__content">
+              <h3 class="leader-card__title">
+                Inquiries
+              </h3>
+              <p>View and respond to questions submitted by parents and youth.</p>
+
+            </div>
+            <div>   
+                <% if ((newInquiryCount || 0) > 0) { %>
+                  <span class="badge-count"><%= newInquiryCount %></span>
+                <% } %>
+            </div>
+          </a>
+
+
+            <!-- Existing / future items -->
+            <a href="/leaderresources/registrations" class="leader-card">
+              <div class="leader-card__icon">📄</div>
+              <div class="leader-card__content">
+                <h3 class="leader-card__title">Registrations</h3>
+                <p>Youth and Leader registrations</p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+        <!-- DOCUMENTS -->
+        <section class="resource-section">
+        <h2>Documents</h2>
+
+        <% if (resources.documents.length === 0) { %>
+            <p class="empty-state">No documents have been added yet.</p>
+        <% } else { %>
+            <ul class="doc-list">
+            <% resources.documents.forEach(doc => { %>
+                <li class="doc-row">
+                <a
+                    href="<%= doc.url %>"
+                    target="_blank"
+                    rel="noopener"
+                    class="doc-link-row"
+                >
+                    <div class="doc-text">
+                    <strong class="doc-title"><%= doc.title %></strong>
+                    <% if (doc.description) { %>
+                        <span class="doc-description"><%= doc.description %></span>
+                    <% } %>
+                    </div>
+                    <span class="doc-action">Open →</span>
+                </a>
+                </li>
+            <% }) %>
+            </ul>
+        <% } %>
+        </section>
+
+        <!-- IMAGES -->
+        <section class="resource-section">
+        <h2>Images & References</h2>
+
+        <% if (resources.images.length === 0) { %>
+            <p class="empty-state">No images uploaded yet.</p>
+        <% } else { %>
+<div class="image-grid">
+  <% resources.images.forEach(item => { %>
+    <figure class="image-card">
+      <div class="media">
+        <% if (item.type === "map") { %>
+          <!-- Map: keep it as an iframe, optionally add an external open link -->
+          <iframe
+            src="<%= item.embedUrl %>"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="<%= item.title %>"
+          ></iframe>
+
+          <% if (item.openUrl) { %>
+            <a class="media-open" href="<%= item.openUrl %>" target="_blank" rel="noopener">Open map ↗</a>
+          <% } %>
+
+        <% } else { %>
+          <!-- Image: click to open modal -->
+          <button
+            type="button"
+            class="media-btn js-lightbox"
+            data-src="<%= item.src %>"
+            data-title="<%= item.title %>"
+            aria-label="View <%= item.title %> full size"
+          >
+            <img src="<%= item.src %>" alt="<%= item.title %>">
+            <span class="media-zoom">View</span>
+          </button>
+        <% } %>
+      </div>
+
+      <figcaption><%= item.title %></figcaption>
+    </figure>
+  <% }) %>
+</div>
+
+<!-- Lightbox Modal (only once per page) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox__backdrop" data-close></div>
+
+  <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox__close" type="button" data-close aria-label="Close">✕</button>
+
+    <div class="lightbox__content">
+      <img id="lightboxImg" alt="">
+    </div>
+
+    <div class="lightbox__caption">
+      <span id="lightboxTitle"></span>
+      <a id="lightboxOpen" target="_blank" rel="noopener">Open in new tab ↗</a>
+    </div>
+  </div>
+</div>
+        <% } %>
+        </section>
+
+    </div>
+    </section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/foot') %>

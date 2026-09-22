@@ -1,0 +1,126 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main id="main" class="page leader-inquiries">
+  <section class="hero hero--inner hero--leaders">
+    <div class="overlay"></div>
+    <header class="center hero__content">
+      <h1>Inquiries</h1>
+      <p class="tagline">New first. One-click status updates.</p>
+    </header>
+  </section>
+
+  <section class="inquiries-admin">
+    <div class="wrap">
+
+      <% if (success) { %>
+        <div class="alert alert--success"><%= success %></div>
+      <% } %>
+      <% if (error) { %>
+        <div class="alert alert--error"><%= error %></div>
+      <% } %>
+
+      <div class="inq-toolbar">
+        <form method="GET" action="/leaders/inquiries" class="inq-filters">
+          <label class="sr-only" for="status">Filter status</label>
+
+          <select id="status" name="status" class="inq-select" data-autosubmit>
+            <option value="all" <%= (selectedStatus || 'all') === 'all' ? 'selected' : '' %>>All</option>
+            <option value="new" <%= selectedStatus === 'new' ? 'selected' : '' %>>New</option>
+            <option value="responded" <%= selectedStatus === 'responded' ? 'selected' : '' %>>Responded</option>
+            <option value="closed" <%= selectedStatus === 'closed' ? 'selected' : '' %>>Closed</option>
+          </select>
+
+          <% if ((selectedStatus || 'all') !== 'all') { %>
+            <a class="btn btn--ghost btn--small inq-clear" href="/leaders/inquiries">Clear</a>
+          <% } %>
+        </form>
+
+        <div class="inq-count">
+          <strong><%= inquiries.length %></strong> shown
+        </div>
+      </div>
+
+      
+      <div class="inq-table-wrap inq-table-wrap--docs">
+        <table class="inq-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Date</th>
+              <th>From</th>
+              <th>Subject</th>
+              <th class="right">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if (!inquiries.length) { %>
+              <tr>
+                <td colspan="5" class="empty">No inquiries found.</td>
+              </tr>
+            <% } %>
+
+            <% inquiries.forEach(i => { 
+                const status = (i.status || 'new').toLowerCase();
+                const next = status === 'new' ? 'responded' : (status === 'responded' ? 'closed' : 'closed');
+                const canAdvance = status !== 'closed';
+            %>
+              <tr class="inq-row inq-row--<%= status %>">
+                <td class="nowrap">
+                  <span class="inq-badge inq-badge--<%= status %>"><%= status %></span>
+                </td>
+
+                <td class="nowrap inq-date">
+                  <%= i.createdAt ? new Date(i.createdAt).toLocaleString() : '' %>
+                </td>
+
+                <td>
+                  <div class="inq-from">
+                    <div class="inq-name"><%= i.name || '—' %></div>
+                    <div class="inq-meta">
+                      <% if (i.email) { %><span><%= i.email %></span><% } %>
+                      <% if (i.phone) { %><span class="dot">•</span><span><%= i.phone %></span><% } %>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="inq-subject">
+                  <div class="inq-subject__title"><%= i.subject || '' %></div>
+
+                  <details class="inq-expand">
+                    <summary class="inq-preview">
+                      <%= (i.message || '').slice(0, 40) %><%= (i.message && i.message.length > 40) ? '…' : '' %>
+                    </summary>
+
+                    <div class="inq-full">
+                      <p class="inq-message"><%= i.message || '' %></p>
+                    </div>
+                  </details>
+                </td>
+
+
+                <td class="right">
+                  <% if (canAdvance) { %>
+                    <form method="POST" action="/leaders/inquiries/<%= i._id %>/next" class="inline">
+                      <button class="inq-action-chip inq-action-chip--<%= next %>" type="submit">
+                        Mark <%= next %>
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <button disabled class="inq-action-chip">Done</button>
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script src="/js/inquiriesAdmin.js" defer></script>
+<%- include('../partials/footer') %>
+<%- include('../partials/foot') %>

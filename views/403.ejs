@@ -1,0 +1,29 @@
+<%- include('partials/head', { title }) %>
+<%- include('partials/header', { user }) %>
+
+<main class="page">
+  <section class="forbidden">
+    <div class="wrap">
+
+      <h1>Access Restricted</h1>
+
+      <p class="forbidden-message">
+        You’re signed in, but you don’t have permission to view this page.
+      </p>
+
+      <p class="forbidden-subtext">
+        If you believe this is a mistake, please contact the Moroni’s Quest administration team.
+      </p>
+
+      <div class="forbidden-actions">
+        <a href="/" class="btn">Return Home</a>
+        <a href="/auth/logout" class="btn btn-secondary">Sign in with a different account</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>
+

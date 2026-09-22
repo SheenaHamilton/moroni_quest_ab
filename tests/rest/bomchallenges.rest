@@ -1,0 +1,82 @@
+//Uses the Localhost
+
+###Get All challenges
+GET http://moroni-quest.onrender.com/bomchallenges
+
+###Get challenge by id
+GET http://moroni-quest.onrender.com/bomchallenges/REPLACE_WITH_ACTUAL_ID
+
+###Get challenges by book - 1 Nephi
+GET http://moroni-quest.onrender.com/bomchallenges/by-book/1 Nephi
+
+###Get challenges by book - Alma
+GET http://moroni-quest.onrender.com/bomchallenges/by-book/Alma
+
+###Get challenges by book - Moroni
+GET http://moroni-quest.onrender.com/bomchallenges/by-book/Moroni
+
+###Get challenges by schedule/date
+GET http://moroni-quest.onrender.com/bomchallenges/by-schedule/2024-07-20
+
+###Create challenge - 1 Nephi
+POST http://moroni-quest.onrender.com/bomchallenges
+Content-Type: application/json
+
+{
+    "title": "Lehi's Vision and Journey",
+    "description": "Read about Lehi's vision of the tree of life and the family's journey into the wilderness",
+    "book": "1 Nephi",
+    "chapters": "1-8",
+    "verses": "1:1-8:38",
+    "startDate": "2024-07-15",
+    "endDate": "2024-07-22",
+    "points": 100
+}
+
+###Create challenge - Alma
+POST http://moroni-quest.onrender.com/bomchallenges
+Content-Type: application/json
+
+{
+    "title": "Alma's Conversion and Ministry",
+    "description": "Study Alma's powerful conversion story and his subsequent ministry",
+    "book": "Alma",
+    "chapters": "36-42",
+    "verses": "36:1-42:31",
+    "startDate": "2024-08-01",
+    "endDate": "2024-08-08",
+    "points": 150
+}
+
+###Create challenge - Moroni
+POST http://moroni-quest.onrender.com/bomchallenges
+Content-Type: application/json
+
+{
+    "title": "Moroni's Promise",
+    "description": "Read Moroni's final testimony and promise to those who read the Book of Mormon",
+    "book": "Moroni",
+    "chapters": "10",
+    "verses": "10:1-34",
+    "startDate": "2024-09-01",
+    "endDate": "2024-09-07",
+    "points": 75
+}
+
+### Update challenge
+PUT http://moroni-quest.onrender.com/bomchallenges/REPLACE_WITH_ACTUAL_ID
+Content-Type: application/json
+
+{
+    "title": "Lehi's Vision and Journey - Extended",
+    "description": "Read about Lehi's vision of the tree of life and the family's journey into the wilderness. Updated with extended reading.",
+    "book": "1 Nephi",
+    "chapters": "1-10",
+    "verses": "1:1-10:22",
+    "startDate": "2024-07-15",
+    "endDate": "2024-07-25",
+    "points": 125
+}
+
+###Delete challenge by id
+DELETE http://moroni-quest.onrender.com/bomchallenges/REPLACE_WITH_ACTUAL_ID

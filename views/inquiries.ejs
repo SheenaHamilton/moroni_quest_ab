@@ -1,0 +1,155 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main" class="page inquiries-page">
+  <section class="hero hero--inner hero--inquiries">
+    <div class="overlay"></div>
+    <header class="center hero__content">
+      <h1>Questions / Inquiries</h1>
+      <p class="tagline">Send us a message and we’ll get back to you as soon as we can.</p>
+    </header>
+  </section>
+
+
+
+  <section id="inquiries">
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert--success" role="status">
+      Thanks! Your message has been sent.
+    </div>
+  <% } %>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert--error" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+  <% if (errors && errors.length) { %>
+  <div class="alert alert--error">
+    <ul>
+      <% errors.forEach(e => { %>
+        <li><%= e.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+    <div class="container">
+      <div class="inquiries-grid">
+        <div class="inquiries-card">
+          <h2 class="card-title">Submit a question</h2>
+          <p class="card-sub">For camp questions, drop-off, packing, schedule, leaders, anything.</p>
+
+
+
+          <form class="inquiry-form" method="POST" action="/inquiries" novalidate>
+            <!-- CSRF (if you use csurf) -->
+            <% if (typeof csrfToken !== 'undefined' && csrfToken) { %>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <% } %>
+
+            <!-- Time-to-submit trap -->
+            <input type="hidden" name="formLoadedAt" id="formLoadedAt" value="">
+
+            <div class="row">
+              <div class="field">
+                <label for="name">Name <span aria-hidden="true">*</span></label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autocomplete="name"
+                  value="<%= (form && form.name) ? form.name : '' %>"
+                >
+              </div>
+
+              <div class="field">
+                <label for="email">Email <span aria-hidden="true">*</span></label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  value="<%= (form && form.email) ? form.email : '' %>"
+                >
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="field">
+                <label for="subject">Subject <span aria-hidden="true">*</span></label>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  required
+                  value="<%= (form && form.subject) ? form.subject : '' %>"
+                >
+              </div>
+              <div class="field">
+                <label for="phone">Phone (optional)</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  value="<%= (form && form.phone) ? form.phone : '' %>"
+                >
+              </div>
+
+            </div>          
+
+            <div class="field">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="7"
+                required
+              ><%= (form && form.message) ? form.message : '' %></textarea>
+              <div class="hint">Please include any details that help us answer quickly.</div>
+            </div>
+
+            <div class="actions">
+              <button class="btn hero-btn" type="submit">Send message</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="inquiries-aside">
+          <div class="aside-card">
+            <h3>Before you submit</h3>
+            <ul>
+              <li>Check the <a href="/prepare#faq">FAQ</a> for common answers.</li>
+              <li>Include your youth’s name (if relevant).</li>
+              <li>For drop-off questions, include your arrival window.</li>
+            </ul>
+          </div>
+
+          <div class="aside-card">
+            <h3>What happens next?</h3>
+            <ol>
+              <li>Your inquiry is logged as <strong>New</strong>.</li>
+              <li>A leader reviews it and updates status.</li>
+              <li>You’ll be contacted by email/phone if needed.</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Set load timestamp for the "time to submit" spam check
+  (function () {
+    var el = document.getElementById('formLoadedAt');
+    if (el) el.value = String(Date.now());
+  })();
+</script>
+
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>

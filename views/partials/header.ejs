@@ -1,0 +1,48 @@
+<header class="site-header" role="banner">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/">
+      <img src="/img/MQ_logo_gold_small.png" alt="Moroni’s Quest" />
+      <strong>Moroni’s Quest</strong>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+      <span class="menu-toggle__bar" aria-hidden="true"></span>
+      <span class="menu-toggle__bar" aria-hidden="true"></span>
+      <span class="menu-toggle__bar" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <!-- Menu -->
+    <div id="primary-menu" class="menu">
+      <a href="/" class="<%= activePage === 'home' ? 'is-active' : '' %>" >Home</a> 
+      <!--<a class="cta" href="/arriving"  title="Getting There"><b>Getting There</b></a>-->
+      <a href="/register" class="<%= activePage === 'register' ? 'is-active' : '' %>" title="Register">Register</a>
+      <a href="/prepare" class="<%= activePage === 'prepare' ? 'is-active' : '' %>" title="What to prepare for">Prepare</a>
+      <a href="/arriving"  class="<%= activePage === 'arriving' ? 'is-active' : '' %>" title="Getting There">Getting There</a>
+      <a href="/costumes" class="<%= activePage === 'costumes' ? 'is-active' : '' %>" title="Coming 2026">Costumes</a>
+      <a href="/photos" class="disabled" title="Coming 2026">Photos</a>
+      <a href="/challenge"  class="<%= activePage === 'challenge' ? 'is-active' : '' %>" title="BoM Reading challenges" >BoM Challenge</a>
+      <a href="/inquiries"  class="<%= activePage === 'inquiries' ? 'is-active' : '' %>" title="Contact us with your questions">Contact Us</a>
+       <!-- <a href="/leaders"  title="Access documents and resources">Leaders</a>-->
+      <div class="menu-social">
+        <a href="https://www.instagram.com/sherwoodparkstakesharingpoint/" target="_blank" rel="noopener" aria-label="Moroni’s Quest on Instagram" class="social-icon">
+          <!-- Instagram SVG -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17.8 6.2a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
+          </svg>
+        </a>
+
+        <a href="https://www.facebook.com/groups/462098050914533" target="_blank" rel="noopener" aria-label="Moroni’s Quest on Facebook" class="social-icon" >
+          <!-- Facebook SVG -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-2.9h2V9.7c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2v1.5h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+</header>

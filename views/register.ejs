@@ -1,0 +1,1188 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<%
+  const yesNoChecked = (name, yesOrNo) => {
+    const x = v[name];
+
+    if (typeof x === "boolean") {
+      return yesOrNo === "yes" ? x === true : x === false;
+    }
+
+    const s = String(x ?? "").toLowerCase();
+    if (yesOrNo === "yes") return ["yes","true","on","1"].includes(s);
+    return ["no","false","0"].includes(s);
+  };
+
+  // Always have a values object, even on first GET render
+  const v = values || {};
+
+  const isChecked = (name, val) => String(v[name] ?? "") === String(val);
+
+  const isTruthy = (name) => {
+    const x = v[name];
+    if (x === undefined || x === null) return false;
+
+    // If some middleware or multi-select ever sends an array
+    if (Array.isArray(x)) {
+      return x.map(String).some(s => ["true","on","1","yes"].includes(s.toLowerCase()));
+    }
+
+    return ["true","on","1","yes"].includes(String(x).toLowerCase());
+  };
+
+  const sel = (name, val) => (String(v[name] ?? "") === String(val) ? "selected" : "");
+
+  // Optional: date normalizer you already used
+  const toDateValue = (x) => {
+    if (!x) return "";
+    if (typeof x === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x)) return x;
+    if (typeof x === "string" && x.includes("T")) return x.slice(0, 10);
+    const d = new Date(x);
+    if (Number.isNaN(d.getTime())) return "";
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  };
+
+%>
+
+<!-- DEBUG Line
+ <pre style="white-space:pre-wrap"><%= JSON.stringify(values, null, 2) %></pre>
+ -->
+
+<main id="main" class="page">
+  <!-- Inner hero / page header -->
+  <section class="hero hero--inner">
+    <div class="overlay"></div>
+    <header class="center">
+      <h1>Registration</h1>
+      <p class="tagline">Now Open • Help us plan (and sleep at night) — register ASAP</p>
+    </header>
+  </section>
+
+
+  <!-- Registration details -->
+  <section id="registration" class="registration">
+    <div class="wrap">
+
+      
+      <div class="registration-steps">
+        <h2 class="registration-steps__title">Starting your Journey</h2>
+
+        <p class="intro">Everything you need to get started.</p>
+                <div class="reg-shield-divider">
+          <span class="shield-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                    fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
+            </svg>
+          </span>
+        </div>
+
+        <ol class="stepper">
+          <li class="stepper__item">
+            <div class="stepper__marker">1</div>
+            <div class="stepper__body">
+              <h4>Fill out the online form</h4>
+              <p>Complete the Moroni’s Quest registration form with your information.</p>
+            </div>
+          </li>
+
+          <li class="stepper__item">
+            <div class="stepper__marker">2</div>
+            <div class="stepper__body">
+              <h4>Prepare your era outfit</h4>
+              <p>Visit the Prepare section for ideas and guidelines for your historical attire.</p>
+            </div>
+          </li>
+
+          <li class="stepper__item">
+            <div class="stepper__marker">3</div>
+            <div class="stepper__body">
+              <h4>Join the Book of Mormon Challenge</h4>
+              <p>Read along to deepen your connection to the stories we’ll bring to life.</p>
+            </div>
+          </li>
+
+          <li class="stepper__item">
+            <div class="stepper__marker">4</div>
+            <div class="stepper__body">
+              <h4>Watch for annoucements</h4>
+              <p>Keep an eye out for updates on Facebook or here for pre-Quest gatherings or important notices. </p>
+            </div>
+          </li>
+
+          <li class="stepper__item">
+            <div class="stepper__marker">5</div>
+            <div class="stepper__body">
+              <h4>Pack your bags</h4>
+              <p>Find packing lists in the Prepare section to help you get ready.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="reg-note">
+          <p class="zeyada-regular">Can’t wait to see you at camp <br>— it’s going to be unforgettable!</p>
+        </div>
+
+      </div>
+
+      <section id="reg-form" class="reg-form">
+
+          <header class="reg-form__header">
+            <h2>Registration</h2>
+          </header>
+
+          <div class="reg-shield-divider">
+            <span class="shield-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                      fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
+              </svg>
+            </span>
+          </div>
+
+          <div id="reg-information" class="reg-intro-strip" role="note" aria-label="Registration info">
+            <p class="reg-intro-strip__lead">
+              This registration includes participant information, parental permission, and the required medical release for those attending the Sherwood Park Stake Moroni’s Quest, in accordance with guidelines from The Church of Jesus Christ of Latter-day Saints. A media release is also included for your review.
+            </p>
+            <p class="reg-intro-strip__lead">
+              <strong>Moroni’s Quest will take place at Tanner Camp in Wabamun, Alberta, beginning July 7 and concluding July 10.</strong>
+            </p>
+            <p class="reg-intro-strip__lead">
+              Digital registration allows leaders to securely access important information quickly during MQ events. Thank you for taking the time to complete this form and for helping us ensure we have the information and permissions needed to support a safe and meaningful experience for everyone involved.
+            </p>
+            <ul class="reg-intro-strip__bullets">
+              <li><strong>Who can register:</strong> Youth turning 14 in 2026 through Grade 12 (graduating 2026) in the <%= stake %>.</li>
+              <li><strong>Adult leaders:</strong> Register here too.</li>
+              <li><strong>Registration due:</strong> March 30, 2026.</li>
+            </ul>
+          </div>
+
+
+          <% if (errorSummary && errorSummary.length) { %>
+            <div
+              id="reg-error-block"
+              class="alert alert--error"
+              role="alert"
+              aria-live="assertive"
+              tabindex="-1"
+              data-scroll-on-load="true"
+            >
+              <p><span><strong>Error: </strong></span><%= errorSummary[0] %></p>
+            </div>
+          <% } %>
+
+          <form
+            id="registration-form"
+            class="registration-form"
+            method="POST"
+            action="/register"
+            novalidate
+          >
+            <!-- Registration Type Selector -->
+            <section class="reg-card reg-card--type">
+              <header class="reg-card__header">
+                <h3>Registration Type</h3>
+                <p>Please select the type of registration you are completing.</p>
+              </header>
+
+              <div class="form-row">
+                <label class="choice">
+                  <input
+                    type="radio"
+                    name="registration_type"
+                    value="youth"
+                    required
+                    <%= !v.registration_type || isChecked('registration_type','youth') ? 'checked' : '' %>
+                  />
+                  Youth Participant
+                </label>
+
+                <label class="choice">
+                  <input
+                    type="radio"
+                    name="registration_type"
+                    value="leader"
+                    required
+                    <%= isChecked('registration_type','leader') ? 'checked' : '' %>
+                  />
+                  Adult Leader
+                </label>
+              </div>
+            </section>
+
+            <!-- Participant Information -->
+            <section class="reg-card" data-section="participant">
+              <header class="reg-card__header">
+                <h3>Participant Information</h3>
+                <p>Please provide basic information for the individual attending Moroni’s Quest.</p>
+              </header>
+
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="first_name">First Name<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    required
+                    autocomplete="given-name"
+                    value="<%= v.first_name || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="last_name">Last Name<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    required
+                    autocomplete="family-name"
+                    value="<%= v.last_name || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="birthdate">Birthdate<span class="required">*</span></label>
+                  <input
+                    type="date"
+                    id="birthdate"
+                    name="birthdate"
+                    required
+                    value="<%= toDateValue(v.birthdate) %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="gender">
+                    Gender<span class="required">*</span>
+                  </label>
+
+                  <div class="form-row">
+                    <label class="choice">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        required
+                        <%= isChecked('gender','male') ? 'checked' : '' %>
+                      />
+                      Male
+                    </label>
+
+                    <label class="choice">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        required
+                        <%= isChecked('gender','female') ? 'checked' : '' %>
+                      />
+                      Female
+                    </label>
+                  </div>
+                </div>      
+
+                <div class="form-group">
+                  <label for="youth_email">Youth Email<span class="required">*</span></label>
+                  <input
+                    type="email"
+                    id="youth_email"
+                    name="youth_email"
+                    required
+                    autocomplete="email"
+                    value="<%= v.youth_email || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="parent_email">Parent Email</label>
+                  <input
+                    type="email"
+                    id="parent_email"
+                    name="parent_email"
+                    autocomplete="email"
+                    value="<%= v.parent_email || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="friend_request">Friend Request</label>
+                  <input
+                    type="text"
+                    id="friend_request"
+                    name="friend_request"
+                    value="<%= v.friend_request || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="ward">Ward / Branch<span class="required">*</span></label>
+                  <select
+                    id="ward"
+                    name="ward"
+                    required
+                  >
+                    <option value="" disabled <%= !v.ward ? 'selected' : '' %>>Choose</option>
+                    <option value="Clarkdale Ward" <%= sel('ward','Clarkdale Ward') %>>Clarkdale Ward</option>
+                    <option value="Cherry Grove Ward" <%= sel('ward','Cherry Grove Ward') %>>Cherry Grove Ward</option>
+                    <option value="Fort Saskatchewan Ward" <%= sel('ward','Fort Saskatchewan Ward') %>>Fort Saskatchewan Ward</option>
+                    <option value="Glen Allan Ward" <%= sel('ward','Glen Allan Ward') %>>Glen Allan Ward</option>
+                    <option value="Nottingham Ward" <%= sel('ward','Nottingham Ward') %>>Nottingham Ward</option>
+                    <option value="Wood Buffalo Ward" <%= sel('ward','Wood Buffalo Ward') %>>Wood Buffalo Ward</option>
+                    <option value="Lloydminster Branch" <%= sel('ward','Lloydminster Branch') %>>Lloydminster Branch</option>
+                    <option value="St. Paul Branch" <%= sel('ward','St. Paul Branch') %>>St. Paul Branch</option>
+                    <option value="Tofield Branch" <%= sel('ward','Tofield Branch') %>>Tofield Branch</option>
+                    <option value="Vermillion Branch" <%= sel('ward','Vermillion Branch') %>>Vermillion Branch</option>
+                  </select>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                  <label for="address_street">
+                    Street Address<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="address_street"
+                    name="address_street"
+                    required
+                    autocomplete="street-address"
+                    placeholder="Street address"
+                    value="<%= v.address_street || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="address_city">
+                    City / Town<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="address_city"
+                    name="address_city"
+                    required
+                    autocomplete="address-level2"
+                    placeholder="City or town"
+                    value="<%= v.address_city || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="address_province">
+                    Province<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="address_province"
+                    name="address_province"
+                    required
+                    autocomplete="address-level1"
+                    placeholder="Province"
+                    value="<%= v.address_province || 'Alberta' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="address_postal">
+                    Postal Code<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="address_postal"
+                    name="address_postal"
+                    required
+                    autocomplete="postal-code"
+                    placeholder="e.g. T8A 1A1"
+                    value="<%= v.address_postal || '' %>"
+                  />
+                </div>
+              </div>
+            </section>
+
+            <!-- Emergency Contact Information -->
+            <section class="reg-card" data-section="emergency-contact">
+              <header class="reg-card__header">
+                <h3>Emergency Contact</h3>
+                <p>Please provide contact information for someone we can reach in case of an emergency.</p>
+              </header>
+
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="emergency_contact_name">
+                    Emergency Contact Name<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="emergency_contact_name"
+                    name="emergency_contact_name"
+                    required
+                    autocomplete="name"
+                    value="<%= v.emergency_contact_name || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="emergency_contact_primary">
+                    Primary Phone Number<span class="required">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="emergency_contact_primary"
+                    name="emergency_contact_primary"
+                    required
+                    autocomplete="tel"
+                    placeholder="e.g. 403-555-1234"
+                    value="<%= v.emergency_contact_primary || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="emergency_contact_secondary">
+                    Secondary Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="emergency_contact_secondary"
+                    name="emergency_contact_secondary"
+                    autocomplete="tel"
+                    placeholder="Optional"
+                    value="<%= v.emergency_contact_secondary || '' %>"
+                  />
+                  <small class="help-text">If available, please provide an alternate number.</small>
+                </div>
+              </div>
+            </section>
+
+            <!-- Health & Dietary -->
+            <section class="reg-card" data-section="health-diet">
+              <header class="reg-card__header">
+                <h3>Health & Dietary</h3>
+                <p>This information helps us keep participants safe and supported at camp.</p>
+              </header>
+
+              <div class="reg-grid">
+                <div class="form-group is-hidden" aria-hidden="true">
+                  <label for="health_number">Health Number</label>
+                  <input
+                    type="text"
+                    id="health_number"
+                    name="health_number"
+                    required
+                    inputmode="text"
+                    autocomplete="off"
+                    placeholder="e.g. 12345-345"
+                    value="<%= v.health_number || '' %>"
+                  />
+                  <small class="help-text">Please enter the participant’s provincial health number.</small>
+                </div>
+              </div>
+
+              <hr class="reg-divider" />
+
+              <!-- Dietary Restrictions -->
+              <fieldset class="form-fieldset">
+                <legend>Dietary Needs / Restrictions<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="diet_specific"
+                      value="yes"
+                      required
+                      data-toggle="diet"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('diet_specific','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="diet_specific"
+                      value="no"
+                      required
+                      data-toggle="diet"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('diet_specific','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="diet-details" aria-hidden="true">
+                  <label for="diet_description">Please describe dietary needs<span class="required">*</span></label>
+                  <textarea
+                    id="diet_description"
+                    name="diet_description"
+                    rows="3"
+                    placeholder="e.g., gluten-free, dairy-free, vegetarian, texture restrictions, etc."
+                    data-req-when-visible
+                  ><%= v.diet_description || '' %></textarea>
+                  <small class="help-text">Include anything we should know to provide safe meals and snacks.</small>
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Allergies -->
+              <fieldset class="form-fieldset">
+                <legend>Allergies<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="allergies"
+                      value="yes"
+                      required
+                      data-toggle="allergies"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('allergies','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="allergies"
+                      value="no"
+                      required
+                      data-toggle="allergies"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('allergies','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="allergies-details" aria-hidden="true">
+                  <label for="allergies_description">Please list allergies<span class="required">*</span></label>
+                  <textarea
+                    id="allergies_description"
+                    name="allergies_description"
+                    rows="3"
+                    placeholder="e.g., peanuts, eggs, bee stings, medications, latex, etc."
+                    data-req-when-visible
+                  ><%= v.allergies_description || '' %></textarea>
+                  <small class="help-text">If severe, include what to do in an emergency (EpiPen, inhaler, etc.).</small>
+                </div>
+              </fieldset>
+            </section>
+
+            <!-- Youth-Only: Medical Details & Permission -->
+            <section class="reg-card reg-card--youth is-hidden" data-section="youth-medical" aria-hidden="false">
+              <header class="reg-card__header">
+                <h3>Youth Medical & Permission</h3>
+                <p>These questions apply to youth participants only. Please answer carefully.</p>
+              </header>
+
+              <!-- Medications -->
+              <fieldset class="form-fieldset">
+                <legend>Does the participant take any medications or over-the-counter medicines?<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="medications"
+                      value="yes"
+                      required
+                      data-toggle="medications"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('medications','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="medications"
+                      value="no"
+                      required
+                      data-toggle="medications"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('medications','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="medications-details" aria-hidden="true">
+                  <label for="medications_description">List medications and instructions<span class="required">*</span></label>
+                  <textarea
+                    id="medications_description"
+                    name="medications_description"
+                    rows="3"
+                    placeholder="Include medication name, dose, timing, and any important instructions."
+                    data-req-when-visible
+                  ><%= v.medications_description || '' %></textarea>
+
+                  <div class="form-subcard">
+                    <p class="subcard-title">Self-Administration</p>
+                    <div class="form-row">
+                      <label class="choice">
+                        <input
+                          type="radio"
+                          name="medications_self_administer"
+                          value="yes"
+                          data-toggle="self-administer"
+                          data-toggle-value="no"
+                          <%= yesNoChecked('medications_self_administer','yes') ? 'checked' : '' %>
+                        />
+                        Youth can self-administer
+                      </label>
+
+                      <label class="choice">
+                        <input
+                          type="radio"
+                          name="medications_self_administer"
+                          value="no"
+                          data-toggle="self-administer"
+                          data-toggle-value="yes"
+                          <%= yesNoChecked('medications_self_administer','no') ? 'checked' : '' %>
+                        />
+                        Needs assistance
+                      </label>
+                    </div>
+
+                    <div class="form-group is-hidden" id="administer-details" aria-hidden="true">
+                      <label for="medications_administer_description">
+                        Who should administer and how?<span class="required">*</span>
+                      </label>
+                      <textarea
+                        id="medications_administer_description"
+                        name="medications_administer_description"
+                        rows="2"
+                        placeholder="e.g., must be administered by nurse/leader; specific timing; stored in med bin, etc."
+                        data-req-when-visible
+                      ><%= v.medications_administer_description || '' %></textarea>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Health Conditions -->
+              <fieldset class="form-fieldset">
+                <legend>Health Conditions That May Impact or Limit Activity<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="health_conditions"
+                      value="yes"
+                      required
+                      data-toggle="health-conditions"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('health_conditions','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="health_conditions"
+                      value="no"
+                      required
+                      data-toggle="health-conditions"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('health_conditions','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="health-conditions-details" aria-hidden="true">
+                  <label for="health_conditions_description">Please describe health conditions<span class="required">*</span></label>
+                  <textarea
+                    id="health_conditions_description"
+                    name="health_conditions_description"
+                    rows="3"
+                    placeholder="Include any diagnoses, triggers, warning signs, and what to do to help."
+                    data-req-when-visible
+                  ><%= v.health_conditions_description || '' %></textarea>
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Recent Surgery -->
+              <fieldset class="form-fieldset">
+                <legend>Recent Surgery or Procedure<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="surgery_recent"
+                      value="yes"
+                      required
+                      data-toggle="surgery"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('surgery_recent','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="surgery_recent"
+                      value="no"
+                      required
+                      data-toggle="surgery"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('surgery_recent','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="surgery-details" aria-hidden="true">
+                  <label for="surgery_description">Please describe the surgery/procedure<span class="required">*</span></label>
+                  <textarea
+                    id="surgery_description"
+                    name="surgery_description"
+                    rows="3"
+                    placeholder="Include date (approx.), restrictions, and anything leaders should know."
+                    data-req-when-visible
+                  ><%= v.surgery_description || '' %></textarea>
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Physical Limitations & Other Needs -->
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="physical_limitations">Physical Limitations</label>
+                  <textarea
+                    id="physical_limitations"
+                    name="physical_limitations"
+                    rows="3"
+                    placeholder="e.g., injuries, mobility limitations, activity restrictions, etc."
+                  ><%= v.physical_limitations || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="other_needs">Other Needs / Notes</label>
+                  <textarea
+                    id="other_needs"
+                    name="other_needs"
+                    rows="3"
+                    placeholder="Anything else we should know to help your youth have a safe, great experience."
+                  ><%= v.other_needs || '' %></textarea>
+                </div>
+              </div>
+
+              <hr class="reg-divider" />
+
+              <!-- Parent/Guardian -->
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="parent_guardian_name">Parent/Guardian Name<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="parent_guardian_name"
+                    name="parent_guardian_name"
+                    required
+                    autocomplete="name"
+                    value="<%= v.parent_guardian_name || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="parent_guardian_relationship">Relationship<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="parent_guardian_relationship"
+                    name="parent_guardian_relationship"
+                    required
+                    placeholder="e.g., Mother, Father, Guardian"
+                    value="<%= v.parent_guardian_relationship || '' %>"
+                  />
+                </div>
+              </div>
+
+              <hr class="reg-divider" />
+
+              <!-- Permission -->
+              <fieldset class="form-fieldset">
+                <legend>Permission & Acknowledgement <small class="help-text">A parent/guardian must check this box.</small> <span class="required">*</span></legend>
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="permission_granted">
+                    <input
+                      type="checkbox"
+                      id="permission_granted"
+                      name="permission_granted"
+                      value="true"
+                      required
+                      <%= isTruthy('permission_granted') ? 'checked' : '' %>
+                    />
+                    I give permission for my youth to participate in the Sherwood Park Moroni's Quest and its associated activities. I understand this event takes place in an outdoor setting and that participants and leaders will be camping with food, restroom facilities, and safe drinking water provided.
+                    <br><br>
+                    I authorize the supervising adult leaders to provide emergency care and to approve necessary medical treatment for my youth in the event of illness or injury.
+                  </label>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="permission_granted_privilege">
+                    <input
+                      type="checkbox"
+                      id="permission_granted_privilege"
+                      name="permission_granted_privilege"
+                      value="true"
+                      required
+                      <%= isTruthy('permission_granted_privilege') ? 'checked' : '' %>
+                    />
+                    I understand that participants are expected to follow Church standards, event safety rules, and leader direction, and to conduct themselves in a Christlike manner. Participation is a privilege and may be revoked if a participant’s behavior is unsafe or inappropriate.
+                  </label>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="permission_date">Permission Date<span class="required">*</span></label>
+                  <input
+                    type="date"
+                    id="permission_date"
+                    name="permission_date"
+                    required
+                    value="<%= toDateValue(v.permission_date) %>"
+                  />
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Youth Participant Acknowledgement -->
+              <fieldset class="form-fieldset">
+                <legend>Youth Participant Acknowledgement<span class="required">*</span></legend>
+
+                <p class="help-text">
+                  We ask that all youth attending read the terms outlined in the Permission & Acknowledgement
+                  of this form and acknowledge their understanding below.
+                </p>
+
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="youth_acknowledgement_privilege">
+                    <input
+                      type="checkbox"
+                      id="youth_acknowledgement_privilege"
+                      name="youth_acknowledgement_privilege"
+                      value="true"
+                      required
+                      <%= isTruthy('youth_acknowledgement_privilege') ? 'checked' : '' %>
+                    />
+                    I understand that attending this event is a privilege. I agree to follow Church standards, event safety rules, and the directions of leaders, and to act in a Christlike way. I understand that if my behavior is unsafe or inappropriate, I may lose the privilege to participate.
+                  </label>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="youth_acknowledgement">
+                    <input
+                      type="checkbox"
+                      id="youth_acknowledgement"
+                      name="youth_acknowledgement"
+                      value="true"
+                      required
+                      <%= isTruthy('youth_acknowledgement') ? 'checked' : '' %>
+                    />
+                    I understand the terms of participating in this event.
+                  </label>
+                </div>
+              </fieldset>
+
+            </section>
+
+            <!-- Leader-Only: Role & Lodging -->
+            <section class="reg-card reg-card--leader is-hidden" data-section="leader-details" aria-hidden="true">
+              <header class="reg-card__header">
+                <h3>Leader Role & Lodging</h3>
+                <p>This section applies to adult leaders only.</p>
+              </header>
+
+              <!-- Role -->
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="role">Leader Role<span class="required">*</span></label>
+                  <select id="role" name="role" required>
+                    <option value="" disabled <%= !v.role ? 'selected' : '' %>>Select a role</option>
+                    <option value="leader" <%= sel('role','leader') %>>Leader</option>
+                    <option value="imma_abba" <%= sel('role','youth-leader') %>>Imma / Abba</option>
+                    <option value="medical" <%= sel('role','medical') %>>Medical</option>
+                    <option value="kitchen" <%= sel('role','kitchen') %>>Kitchen / Food Service</option>
+                    <option value="security" <%= sel('role','security') %>>Security</option>
+                    <option value="logistics" <%= sel('role','support') %>>Support / Logistics</option>
+                    <option value="photography" <%= sel('role','photography') %>>Photography</option>
+                    <option value="registration" <%= sel('role','registration') %>>Registration</option>
+                    <option value="programming" <%= sel('role','programming') %>>Programming</option>
+                    <option value="production" <%= sel('role','production') %>>Production / Actors</option>
+                    <option value="other" <%= sel('role','other') %>>Other</option>
+                  </select>
+                  <small class="help-text">Choose the role you’ve been asked to serve in.</small>
+                </div>
+              </div>
+
+              <hr class="reg-divider" />
+
+              <!-- Dates -->
+              <div class="reg-grid">
+                <div class="form-group">
+                  <label for="arrival_date">Arrival Date<span class="required">*</span></label>
+                  <input type="date" id="arrival_date" name="arrival_date" required value="<%= toDateValue(v.arrival_date) %>" />
+                  <small class="help-text">Leaders may arrive earlier depending on assignment.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="departure_date">Departure Date<span class="required">*</span></label>
+                  <input type="date" id="departure_date" name="departure_date" required value="<%= toDateValue(v.departure_date) %>" />
+                </div>
+              </div>
+
+              <hr class="reg-divider" />
+
+              <!-- Medical training -->
+              <fieldset class="form-fieldset">
+                <legend>Do you have any medical or first-aid training or background?<span class="required">*</span></legend>
+
+                <div class="form-row">
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="medical_background"
+                      value="yes"
+                      required
+                      data-toggle="medical-background"
+                      data-toggle-value="yes"
+                      <%= yesNoChecked('medical_background','yes') ? 'checked' : '' %>
+                    />
+                    Yes
+                  </label>
+
+                  <label class="choice">
+                    <input
+                      type="radio"
+                      name="medical_background"
+                      value="no"
+                      required
+                      data-toggle="medical-background"
+                      data-toggle-value="no"
+                      <%= yesNoChecked('medical_background','no') ? 'checked' : '' %>
+                    />
+                    No
+                  </label>
+                </div>
+
+                <div class="form-group is-hidden" id="medical-background-details" aria-hidden="true">
+                  <label for="medical_background_description">Please briefly describe your training or experience:<span class="required">*</span></label>
+                  <textarea
+                    id="medical_background_description"
+                    name="medical_background_description"
+                    rows="3"
+                    placeholder="e.g., Nurse, EMT, First Aid & CPR certified, lifeguard, medical student, wilderness first aid, etc."
+                    data-req-when-visible
+                  ><%= v.medical_background_description || '' %></textarea>
+                </div>
+              </fieldset>
+
+              <hr class="reg-divider" />
+
+              <!-- Lodging -->
+              <fieldset class="form-fieldset">
+                <legend>Lodging options for cabin assignments, tent sites and RV sites are available. RV sites are limited.</legend>
+
+                <div class="reg-grid">
+                  <div class="form-group">
+                    <label for="lodging_type">Lodging Preference<span class="required">*</span></label>
+                    <select
+                      id="lodging_type"
+                      name="lodging_type"
+                      required
+                      data-toggle="lodging"
+                    >
+                      <option value="" disabled <%= !v.lodging_type ? 'selected' : '' %>>Select lodging</option>
+                      <option value="tent" <%= sel('lodging_type','tent-own') %>>Tent (Bringing my Own)</option>
+                      <option value="tent" <%= sel('lodging_type','tent-need') %>>Tent (Need one Provided)</option>
+                      <option value="trailer" <%= sel('lodging_type','trailer') %>>Trailer / RV</option>
+                      <option value="cabin" <%= sel('lodging_type','cabin') %>>Shared Cabin Assignment</option>
+                      <option value="offsite" <%= sel('lodging_type','offsite') %>>Off-site (commuting)</option>
+                      <option value="unknown" <%= sel('lodging_type','unknown') %>>Not sure yet</option>
+                    </select>
+
+                  </div>
+                </div>
+
+                <div class="form-group is-hidden" id="lodging-details" aria-hidden="true">
+                  <label for="lodging_description">Lodging Details</label>
+                  <textarea
+                    id="lodging_description"
+                    name="lodging_description"
+                    rows="3"
+                    placeholder="Optional: trailer length, special notes, etc."
+                  ><%= v.lodging_description || '' %></textarea>
+                </div>
+              </fieldset>
+            </section>
+
+            <!-- Terms & Media Consents -->
+            <section class="reg-card" data-section="terms-media">
+              <header class="reg-card__header">
+                <h3>Terms & Media Consents</h3>
+                <p>Please review and confirm the following acknowledgements.</p>
+              </header>
+
+              <div class="form-stack">
+
+                <!-- Media Explanation -->
+                <div class="callout">
+                  <p class="callout__title">Media Release - Part 1 - Photo / Video / Audio / Works</p>
+                  <p class="callout__text">
+                    Outside of the release forms already provided, the Sherwood Park Stake of the Church of Jesus Christ of Latter-Day Saints requires consent to record, copy, film or photograph your child's name, image, work, or performance (hereinafter collectively referred to as "Works") and to distribute these Works for the purpose of publishing, posting on Moroni's Quest website, social media, newspapers or for broadcasting on television and radio as determined by the Stake members responsible for Media around Sherwood Park Stake's Moroni's Quest.
+
+                    I hereby waive any right to approve the use of these Works now or in the future, whether the use is known or unknown. I understand the Works may appear in electronic form on the Internet or in other publications outside of the Sherwood Park Stakes control .  I agree that I will not hold Stake or Church responsible for such unauthorized productions. 
+                  </p>
+                </div>
+
+                <!-- Internal Consent -->
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="media_consent_internal">
+                    <input
+                      type="checkbox"
+                      id="media_consent_internal"
+                      name="media_consent_internal"
+                      value="true"
+                      <%= isTruthy('media_consent_internal') ? 'checked' : '' %>
+                    />
+                    I consent to the participant’s Works being shared with and published/posted/viewed by Sherwood Park Stake members assigned to media responsibilities. 
+                  </label>
+                </div>
+
+
+                <!-- Media Explanation -->
+                <div class="callout">
+                  <p class="callout__title">Media Release - Part 2 - Media Outlets</p>
+                  <p class="callout__text">
+                    I also understand that external media organizations may attend the Sherwood Park Stake, Moroni's Quest event. I give permission for my child's name, image, work and performance to be recorded (audio/video), copied, filmed or photographed for the purpose of being published and/or broadcast on-line, on television or radio. 
+                  </p>
+                </div>
+
+                <!-- External Consent -->
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="media_consent_external">
+                    <input
+                      type="checkbox"
+                      id="media_consent_external"
+                      name="media_consent_external"
+                      value="true"
+                      <%= isTruthy('media_consent_external') ? 'checked' : '' %>
+                    />
+                    I consent to the participant’s Works being published or broadcast by organizations external to the Sherwood Park Stake.
+                  </label>
+                </div>
+
+                <!-- Media Release Understood -->
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="media_release_understood">
+                    <input
+                      type="checkbox"
+                      id="media_release_understood"
+                      name="media_release_understood"
+                      value="true"
+                      required
+                      <%= isTruthy('media_release_understood') ? 'checked' : '' %>
+                    />
+                    I have read this Media Release information and I fully understand the contents and meaning of this release.
+                    <span class="required">*</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- Final Confirmation -->
+            <section class="reg-card reg-card--final" data-section="final-confirmation">
+              <header class="reg-card__header">
+                <h3>Final Confirmation</h3>
+                <p>Please review your information carefully before submitting.</p>
+              </header>
+
+              <div class="form-stack">
+                <div class="form-group">
+                  <label for="form_completed_by">
+                    Name of Person Completing This Form<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="form_completed_by"
+                    name="form_completed_by"
+                    required
+                    placeholder="e.g., Parent, Guardian, or Participant"
+                    autocomplete="name"
+                    value="<%= v.form_completed_by || '' %>"
+                  />
+                  <small class="help-text">
+                    This helps us know who to contact if we have questions about this registration.
+                  </small>
+                </div>
+
+                <!-- Terms Understood -->
+                <div class="form-group">
+                  <label class="choice choice--checkbox" for="terms_understood">
+                    <input
+                      type="checkbox"
+                      id="terms_understood"
+                      name="terms_understood"
+                      value="true"
+                      required
+                      <%= isTruthy('terms_understood') ? 'checked' : '' %>
+                    />
+                    I understand and agree to follow Moroni’s Quest rules and expectations, including safety guidelines and leader direction. I declare that the above statements are complete and correct.
+                    <span class="required">*</span>
+                  </label>
+                </div>
+
+                <div class="review-note">
+                  <p>
+                    By submitting this form, you confirm that the information provided is accurate and complete to the best of your knowledge.
+                  </p>
+                  <p>
+                    After submission, your registration will be recorded immediately. Please ensure all required fields are filled out.
+                  </p>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn--primary btn--large">
+                    Submit Registration
+                  </button>
+                </div>
+              </div>
+            </section>
+
+          </form>
+
+      </section>
+
+
+    </div>
+
+    
+
+  </section>
+
+</main>
+
+<script src="/js/register.js" defer></script>
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>

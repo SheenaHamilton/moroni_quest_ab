@@ -1,0 +1,34 @@
+//Uses the Localhost
+
+###Get Current User (Before Login)
+GET http://localhost:3000/auth/user
+
+###Initiate Google OAuth Login
+# NOTE: This must be tested in a browser, not REST client
+# Open this URL in your browser: http://localhost:3000/auth/login
+GET http://localhost:3000/auth/login
+
+###Get Current User (After Login)
+# Test this after logging in via browser
+GET http://localhost:3000/auth/user
+
+###Logout
+GET http://localhost:3000/auth/logout
+
+###Login Failed Response
+GET http://localhost:3000/auth/failed
+
+###Test Protected Route - Get All Photos (Requires Auth)
+# This will return 401 if not authenticated
+GET http://localhost:3000/photos
+
+###Test Protected Route - Get All Youth (Requires Auth)
+# This will return 401 if not authenticated
+GET http://localhost:3000/youth
+
+###Test Admin Route - Delete Photo (Requires Admin)
+# This will return 403 if not admin, 401 if not authenticated
+DELETE http://localhost:3000/photos/REPLACE_WITH_ACTUAL_ID
+
+###Check API Docs (No Auth Required)
+GET http://localhost:3000/api-docs

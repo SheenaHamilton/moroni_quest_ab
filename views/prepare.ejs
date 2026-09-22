@@ -1,0 +1,305 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main id="main" class="page">
+  <!-- Inner hero / page header -->
+  <section class="hero hero--inner hero--prepare">
+    <div class="overlay"></div>
+    <header class="center hero__content">
+      <h1>Prepare</h1>
+      <p class="tagline">Everything you need to be ready for the Journey.</p>
+
+      <div class="hero-actions">
+        <a href="#packing" class="hero-btn hero-btn--ghost">Packing List</a>
+        <a href="#standards" class="hero-btn hero-btn--ghost">Standards</a>
+        <a href="#faq" class="hero-btn hero-btn--ghost">FAQ</a>
+        <a href="#forms" class="hero-btn hero-btn--ghost">Forms</a>
+      </div>
+    </header>
+  </section>
+
+  <!-- Prepare content -->
+  <section id="prepare" class="prepare">
+      <div class="prepare-intro">
+        <div class="wrap">
+          <h2 class="prepare__title">Getting Ready for the Quest</h2>
+          <p class="intro">
+            Pack smart, review the standards, finish your forms, and prepare spiritually so you
+            can fully enjoy Moroni’s Quest.
+          </p>
+
+          <div class="reg-shield-divider">
+            <span class="shield-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                      fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    <!-- PACKING -->
+    <section id="packing" class="prepare-block">
+      <div class="wrap">
+        <h3>Suggested Packing List</h3>
+        <p class="block-intro">
+          Label everything. Plan for outdoor weather, active days, and cozy nights. We encourage youth and leaders to arrive in their Quest costume.
+        </p>
+
+        <div class="prepare-grid">
+          <article>
+            <h4>Essentials</h4>
+            <ul>
+              <li>Water bottle (labeled)</li>
+              <li>Camp plate, bowl, cup & cutlery</li>
+              <li>Flashlight or headlamp</li>
+              <li>Sunscreen</li>
+              <li>Insect Spray</li>
+              <li>Foldable camp chair</li>
+              <li>Personal first-aid kit</li>
+              <li>Personal medication. (inhalers, allergies etc.)</li>
+            </ul>
+          </article>
+
+          <article>
+            <h4>Clothing</h4>
+            <ul>
+              <li>2 sets of Quest clothing.</li>
+              <li>3 T-shirts</li>
+              <li>2 pairs of shorts (under tunic).</li>
+              <li>2 pairs of pants (under tunic).</li>
+              <li>Sweater (under tunic)</li>
+              <li>Daily change of underwear</li>
+              <li>Daily change of socks (extra are always good)</li>
+              <li>Rain jacket</li>
+              <li>Shoes/sturdy sandals (for walking/ziplining/activities)</li>
+              <li>Beach Sandals (for free time/beach)</li>
+              <li>Pajamas</li>
+              <li>Swimsuit</li>
+              <li>Jacket</li>
+            </ul>
+          </article>
+
+          <article>
+            <h4>Sleeping &amp; Hygiene</h4>
+            <ul>
+              <li>Warm Sleeping bag</li>
+              <li>Sleeping pad</li>
+              <li>Pillow</li>
+              <li>Small toiletry bag</li>
+              <li>Toothbrush and toothpaste</li>
+              <li>Deodorant</li>
+              <li>Hand towel and bath towel</li>
+              <li>Wet wipes / baby wipes (great for quick clean-ups)</li>
+              <li>Tissues</li>
+              <li>Comb, brush, mirror</li>
+              <li>Feminine hygiene products</li>
+            </ul>
+          </article>
+        </div>
+
+        <details class="prepare-details">
+          <summary><strong>What NOT to bring</strong></summary>
+          <ul>
+            <li>Electronics (speakers, gaming devices)</li>
+            <li>Valuables</li>
+            <li>open-blade knives or hatchets</li>
+            <li>Fireworks</li>
+            <li>Airsoft or Paintball guns</li>
+          </ul>
+        </details>
+
+        <% if (packingPdfUrl) { %>
+          <p class="prepare-actions">
+            <a class="hero-btn" href="<%= packingPdfUrl %>" download>
+              Download Full Packing List (PDF)
+            </a>
+          </p>
+        <% } %>
+      </div>
+    </section>
+
+        <!-- STANDARDS -->
+    <section id="standards" class="prepare-block">
+      <!-- gold glow overlay -->
+      <div id="color-block"></div>
+
+      <div class="wrap">
+        <h3>
+          <span class="section-tag">Live the Standards</span>
+          Standards &amp; Conduct
+        </h3>
+        
+        <p class="block-intro">
+          We follow the standards of The Church of Jesus Christ of Latter-day Saints.
+          Be where you should be, with your assigned tribe, and help create a safe,
+          uplifting experience for everyone.
+        </p>
+
+        <div class="prepare-grid standards-grid">
+          <article>
+            <h4>Dress &amp; Appearance</h4>
+            <ul>
+              <li>Clothing suitable for active outdoor days.</li>
+              <li>Quest outfits worn throughtout the day.</li>
+              <li>Suitable footwear for walking/ziplining/activities. (Flip-flops only for free time)</li>
+              <li>Layers for warmth and rain protection.</li>
+            </ul>
+          </article>
+
+          <article>
+            <h4>Devices</h4>
+            <ul>
+              <li>Electronics stay home unless directed by leaders</li>
+              <li>Focus on the experience and your family group</li>
+            </ul>
+          </article>
+
+          <article>
+            <h4>Conduct</h4>
+            <ul>
+              <li>Be respectful and inclusive</li>
+              <li>Follow safety instructions</li>
+              <li>Quiet hours observed</li>
+              <li>When entering a tent, youth can go alone or in groups of 3 or more. </li>
+              <li>2 people should never be in a tent together, even if they are the same gender.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="prepare-block">
+      <div class="wrap">
+        <h3>FAQ</h3>
+
+        <div class="prepare-faq">
+          <details>
+            <summary>Where do we sleep?</summary>
+            <p>Youth sleep in areas designated to their tribes. Male and female youth sleep in separate tents, and leaders sleep in separate tents within the same area.</p>
+          </details>
+
+          <details>
+            <summary>Can I bring snacks?</summary>
+            <p>For safety reasons, we ask that youth do not bring snacks to camp. Food can attract wildlife. If a snack is required for medical or dietary reasons, please contact your tribe leaders for direction on storage.</p>
+          </details>
+
+          <details>
+            <summary>What if I have allergies or medications?</summary>
+            <p>Please list all medications, allergies, and medical conditions on your registration forms. At check-in, some medications may need to be turned in as directed. For any youth that have indicated medications, allergies, or other concerns on their registration form, they will also be directed to check in with our on-site Medical Committee, they will work closely with you to help ensure your safety and well-being throughout the event.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where is the drop-off location?</summary>
+            <p>Visit the <a href="/arriving">Getting There</a> page for directions and arrival maps.</p>
+          </details>
+
+          <details>
+            <summary>I’m a leader and would like to check in early. What are my options?</summary>
+            <p>Leaders are expected to arrive by 7:30 AM on July 7. Early check-in and overnight accommodations are available the evening before. Please indicate this need on your registration form. Early arrival allows time for setup and preparation before youth arrive. Dinner will be available for those arriving July 6th.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is there shower facilities on-site?</summary>
+            <p>There are shower facilities. However, the shower facilities will not be available for the youth due to the size of the camp.
+            </p>
+          </details>
+          <details>
+            <summary>What time should youth arrive?</summary>
+            <p>Youth should arrive between <strong>9:00–10:00 AM</strong>.</p>
+          </details>
+
+          <details>
+            <summary>Should youth arrive in costume?</summary>
+            <p>Yes. Youth and leaders should arrive wearing their Quest costume.</p>
+          </details>
+
+          <details>
+            <summary>Where is the drop-off zone?</summary>
+            <p>The drop-off zone is marked on the map. Visit the <a href="/arriving">Getting There</a> page to see a map of the drop-off zone. Please follow signs and volunteer directions when you arrive.</p>
+          </details>
+
+          <details>
+            <summary>Can we park and stay?</summary>
+            <p>Drop-off should be brief so traffic does not back up. Please follow volunteer directions if you need assistance.</p>
+          </details>
+
+          <details>
+            <summary>When should leaders arrive?</summary>
+            <p>Leaders are expected to arrive by <strong>7:30 AM on July 7</strong>, unless other arrangements have been made.</p>
+          </details>
+
+          <details>
+            <summary>Is the Moroni’s Quest location accessible?</summary>
+            <p>
+              Moroni’s Quest takes place primarily outdoors. Camp pathways and activity areas include
+              dirt and gravel paths, grassy terrain, and a limited number of paved walking roads. 
+            </p>
+          </details>
+
+          <details>
+            <summary>I may need accommodations. What can I expect?</summary>
+            <p>
+              Activities have been planned with accessibility and accommodations in mind. More physically
+              demanding activities have been modified where possible to allow participants to have a
+              meaningful and full experience.
+            </p>
+          </details>
+
+          <details>
+            <summary>What if I have sensory issues, mobility limitations, injuries, or activity restrictions?</summary>
+            <p>
+              Some activities and reenactments may include loud noises or special effects. Participants
+              with mobility limitations, injuries, sensory concerns, or other activity restrictions may
+              require accommodations or assistance travelling between certain locations.
+            </p>
+          </details>
+
+          <details>
+            <summary>Who do I contact regarding possible activity restrictions or accommodations?</summary>
+            <p>
+              If you anticipate requiring assistance or have activity restrictions based on your
+              circumstances, please contact <strong>Tracey Hatch</strong> before camp so we can plan how
+              best to meet your needs and help ensure a positive experience.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+        <!-- FORMS -->
+    <section id="forms" class="prepare-block">
+      <div class="wrap">
+        <h3>Printable documents</h3>
+        <p class="block-intro">
+          Printable forms are available below. Online registration is the quickest and easiest option, but if you need a paper copy, please complete and turn in all required forms before arrival. If you have questions, contact your youth leaders or bishopric.
+        </p>
+
+        <div class="form-shields">
+          <% if (packingPdfUrl) { %>
+            <a href="<%= packingPdfUrl %>" download class="shield-btn">
+              <span class="shield-icon">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
+                        fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span class="shield-label">Packing List</span>
+              <span class="shield-download">⬇</span>
+            </a>
+          <% } %>
+        </div>
+
+      </div>
+    </section>
+
+  </section>
+
+</main>
+
+<%- include('partials/footer') %>
+<%- include('partials/foot') %>

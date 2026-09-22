@@ -1,0 +1,61 @@
+//Uses the Localhost
+
+###Get All inquiries
+GET http://localhost:3000/inquiries
+
+###Get inquiry by id
+GET http://localhost:3000/inquiries/REPLACE_WITH_ACTUAL_ID
+
+###Get inquiries by status - pending
+GET http://localhost:3000/inquiries/by-status/pending
+
+###Get inquiries by status - in-progress
+GET http://localhost:3000/inquiries/by-status/in-progress
+
+###Get inquiries by status - resolved
+GET http://localhost:3000/inquiries/by-status/resolved
+
+###Get inquiries by status - closed
+GET http://localhost:3000/inquiries/by-status/closed
+
+###Create inquiry
+POST http://localhost:3000/inquiries
+Content-Type: application/json
+
+{
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@example.com",
+    "phone": "780-555-1234",
+    "subject": "Question about Event Schedule",
+    "message": "Hi, I was wondering if there will be any breaks during the day-long activities? My daughter has some dietary restrictions and needs to eat at specific times.",
+    "status": "pending"
+}
+
+###Create another inquiry
+POST http://localhost:3000/inquiries
+Content-Type: application/json
+
+{
+    "name": "Michael Brown",
+    "email": "mbrown@example.com",
+    "phone": "780-555-5678",
+    "subject": "Volunteer Opportunity",
+    "message": "I would like to volunteer as a leader for the Book of Mormon challenges. Do you still need volunteers? Please let me know what the time commitment would be.",
+    "status": "pending"
+}
+
+### Update inquiry
+PUT http://localhost:3000/inquiries/REPLACE_WITH_ACTUAL_ID
+Content-Type: application/json
+
+{
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@example.com",
+    "phone": "780-555-1234",
+    "subject": "Question about Event Schedule",
+    "message": "Hi, I was wondering if there will be any breaks during the day-long activities? My daughter has some dietary restrictions and needs to eat at specific times.",
+    "status": "resolved"
+}
+
+###Delete inquiry by id
+DELETE http://localhost:3000/inquiries/REPLACE_WITH_ACTUAL_ID

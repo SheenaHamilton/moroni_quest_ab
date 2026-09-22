@@ -1,0 +1,102 @@
+//Uses the Localhost
+
+###Get All leaders
+GET http://localhost:3000/leader
+
+###Get leader by id
+GET http://localhost:3000/leader/68ed28bd7fac01e7ccf6028c
+
+###Get leader by sleep
+GET http://localhost:3000/leader/by-sleep?lodging_type=assigned
+
+###Create leader
+POST http://localhost:3000/leader
+Content-Type: application/json
+
+{
+  "timestamp": "2025-10-08T15:32:00Z",
+  "email": "leader.jane@example.com",
+  "first_name": "Jane",
+  "last_name": "Thompson",
+  "ward": "Sherwood Park 2nd Ward",
+  "birthdate": "1982-05-15T00:00:00Z",
+  "address_street": "456 Maple Crescent",
+  "address_city": "Sherwood Park",
+  "address_province": "AB",
+  "address_postal": "T8A 2N7",
+
+  "emergency_contact_name": "Tom Thompson",
+  "emergency_contact_primary": "780-555-8888",
+  "emergency_contact_secondary": "780-555-9999",
+
+  "health_number": "1234567890",
+
+  "diet_specific": true,
+  "diet_description": "Gluten-free",
+
+  "allergies": true,
+  "allergies_description": "Peanuts",
+
+  "role": "Ward Leader",
+  "arrival_date": "2025-07-03T12:00:00Z",
+  "departure_date": "2025-07-06T15:00:00Z",
+
+  "lodging_type": "assigned",
+  "lodging_description": "Assigned on-site lodging",
+
+  "terms_understood": true,
+  "media_consent_internal": true,
+  "media_consent_external": false,
+  "media_release_understood": true,
+
+  "form_completed_by": "Jane Thompson",
+  "date_completed": "2025-05-10T00:00:00Z"
+}
+
+
+### Update leader
+PUT http://localhost:3000/leader/68ed26de2797a6fb27a2f9e7
+Content-Type: application/json
+
+{
+  "timestamp": "2025-10-08T15:32:00Z",
+  "email": "leader.jane@example.com",
+  "first_name": "Jane",
+  "last_name": "Thompson",
+  "ward": "Sherwood Park 2nd Ward",
+  "birthdate": "1982-05-15T00:00:00Z",
+  "address_street": "456 Maple Crescent",
+  "address_city": "Sherwood Park",
+  "address_province": "AB",
+  "address_postal": "T8A 2N7",
+
+  "emergency_contact_name": "Tom Thompson",
+  "emergency_contact_primary": "780-555-8888",
+  "emergency_contact_secondary": "780-555-9999",
+
+  "health_number": "1234567890",
+
+  "diet_specific": true,
+  "diet_description": "Gluten-free",
+
+  "allergies": true,
+  "allergies_description": "Peanuts",
+
+  "role": "Ward Leader",
+  "arrival_date": "2025-07-03T12:00:00Z",
+  "departure_date": "2025-07-06T15:00:00Z",
+
+  "lodging_type": "camper",
+  "lodging_description": "Personal RV 32 feet",
+
+  "terms_understood": true,
+  "media_consent_internal": true,
+  "media_consent_external": false,
+  "media_release_understood": true,
+
+  "form_completed_by": "Jane Thompson",
+  "date_completed": "2025-05-10T00:00:00Z"
+}
+
+###Delete leader by id
+DELETE http://localhost:3000/leader/68ed26de2797a6fb27a2f9e7

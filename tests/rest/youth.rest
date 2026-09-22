@@ -1,0 +1,112 @@
+//Uses the Localhost
+
+###Get All youth
+GET http://localhost:3000/youth
+
+###Get youth by id
+GET http://localhost:3000/youth/68e619977fac01e7ccf60233
+
+###Get youth by age
+GET http://localhost:3000/youth/by-age?min=14&max=16
+
+###Get youth by ward
+GET http://localhost:3000/youth/by-ward?ward=Sherwood%20Park%201st%20Ward
+
+###Get youth by medical
+GET http://localhost:3000/youth/by-medical
+
+###Get youth by allergies
+GET http://localhost:3000/youth/by-allergies
+
+###Get youth by food
+GET http://localhost:3000/youth/by-food
+
+###Create youth
+POST http://localhost:3000/youth
+Content-Type: application/json
+
+{
+  "email": "liam.thompson@example.com",
+  "first_name": "Liam",
+  "last_name": "Thompson",
+  "ward": "Sherwood Park 5th Ward",
+  "birthdate": "2009-11-21",
+  "address_street": "55 Poplar Place",
+  "address_city": "Sherwood Park",
+  "address_province": "AB",
+  "address_postal": "T8A 5Z6",
+  "emergency_contact_name": "Karen Thompson",
+  "emergency_contact_primary": "780-555-6677",
+  "emergency_contact_secondary": "780-555-6688",
+  "health_number": "78901-345",
+  "diet_specific": false,
+  "diet_description": "",
+  "allergies": true,
+  "allergies_description": "Bee stings – carries EpiPen",
+  "medications": true,
+  "medications_self_administer": false,
+  "medications_administer_description": "Requires assistance with EpiPen use",
+  "medications_description": "EpiPen as needed for allergic reaction",
+  "health_conditions": false,
+  "health_conditions_description": "",
+  "surgery_recent": false,
+  "surgery_description": "",
+  "physical_limitations": "",
+  "other_needs": "Needs supervision during outdoor activities due to allergy risk.",
+  "parent_guardian_name": "Karen Thompson",
+  "parent_guardian_relationship": "Mother",
+  "permission_granted": true,
+  "permission_date": "2025-10-05",
+  "terms_understood": true,
+  "media_consent_internal": true,
+  "media_consent_external": false,
+  "media_release_understood": true,
+  "form_completed_by": "Karen Thompson"
+}
+
+
+### Update youth
+PUT http://localhost:3000/youth/68e6217e0cfff562ff2a5460
+Content-Type: application/json
+
+{
+  "email": "liam.thompson@mail.com",
+  "first_name": "Liam",
+  "last_name": "Thompsons",
+  "ward": "Sherwood Park Ward",
+  "birthdate": "2009-11-21",
+  "address_street": "55 Poplar Place",
+  "address_city": "Sherwood Park",
+  "address_province": "AB",
+  "address_postal": "T8A 5Z6",
+  "emergency_contact_name": "Karen Thompson",
+  "emergency_contact_primary": "780-555-6677",
+  "emergency_contact_secondary": "780-555-6688",
+  "health_number": "78901-345",
+  "diet_specific": false,
+  "diet_description": "",
+  "allergies": true,
+  "allergies_description": "Bee stings – carries EpiPen",
+  "medications": true,
+  "medications_self_administer": false,
+  "medications_administer_description": "Requires assistance with EpiPen use",
+  "medications_description": "EpiPen as needed for allergic reaction",
+  "health_conditions": false,
+  "health_conditions_description": "",
+  "surgery_recent": false,
+  "surgery_description": "",
+  "physical_limitations": "",
+  "other_needs": "Needs supervision during outdoor activities due to allergy risk.",
+  "parent_guardian_name": "Karen Thompson",
+  "parent_guardian_relationship": "Mother",
+  "permission_granted": true,
+  "permission_date": "2025-10-05",
+  "terms_understood": true,
+  "media_consent_internal": true,
+  "media_consent_external": false,
+  "media_release_understood": true,
+  "form_completed_by": "Karen Thompson"
+}
+
+###Delete youth by id
+DELETE http://localhost:3000/youth/68e7485ee046bb11fdf2d19e
