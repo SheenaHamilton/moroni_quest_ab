@@ -323,10 +323,6 @@ registerValidation.validateRegistration = () => {
             .customSanitizer(checkboxToBool)
             .toBoolean(),
 
-        body("media_consent_external")
-            .customSanitizer(checkboxToBool)
-            .toBoolean(),
-
         body("media_release_understood")
             .exists({ checkFalsy: true })
             .withMessage("Terms & Media Consents: Media release acknowledgement is required.")

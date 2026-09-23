@@ -9,27 +9,52 @@
     const btnNext = root.querySelector('[data-next]');
 
     let index = 0;
+    let dots = [];
+    let perView = 1;
+    let pageCount = 1;
     let timer = null;
     const intervalMs = 5500;
 
-    // Build dots
-    const dots = slides.map((_, i) => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'mq-carousel__dot';
-        b.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        b.addEventListener('click', () => goTo(i, true));
-        dotsWrap.appendChild(b);
-        return b;
-    });
+    function getPerView() {
+        const value = getComputedStyle(root).getPropertyValue('--slides-per-view');
+        return Math.max(1, Number.parseInt(value, 10) || 1);
+    }
+
+    function buildDots() {
+        dotsWrap.replaceChildren();
+        dots = Array.from({ length: pageCount }, (_, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'mq-carousel__dot';
+            b.setAttribute('aria-label', `Go to carousel page ${i + 1}`);
+            b.addEventListener('click', () => goTo(i, true));
+            dotsWrap.appendChild(b);
+            return b;
+        });
+    }
+
+    function setLayout() {
+        const nextPerView = getPerView();
+        const nextPageCount = Math.ceil(slides.length / nextPerView);
+
+        if (nextPerView !== perView || nextPageCount !== pageCount || dots.length === 0) {
+            perView = nextPerView;
+            pageCount = nextPageCount;
+            index = Math.min(index, pageCount - 1);
+            buildDots();
+        }
+
+        update();
+    }
 
     function update() {
-        track.style.transform = `translateX(-${index * 100}%)`;
+        const firstSlide = Math.min(index * perView, Math.max(0, slides.length - perView));
+        track.style.transform = `translateX(-${firstSlide * (100 / perView)}%)`;
         dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
     }
 
     function goTo(i, userAction = false) {
-        index = (i + slides.length) % slides.length;
+        index = (i + pageCount) % pageCount;
         update();
         if (userAction) restart();
     }
@@ -78,6 +103,12 @@
         start();
     });
 
-    update();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(setLayout, 120);
+    });
+
+    setLayout();
     start();
 })();

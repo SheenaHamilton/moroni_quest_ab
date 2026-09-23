@@ -1,6 +1,7 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
 
+<% if (showArrivalBanner) { %>
 <section class="arrival-banner">
   <div class="arrival-banner__wrap">
 
@@ -22,13 +23,14 @@
 
   </div>
 </section>
+<% } %>
 
 <main class="hero">
   <div class="overlay"></div>
   <header class="center">
     <img class="logoLarge" src="/img/MQ_logo_gold.png" alt="Moroni's Quest logo" />
     <p class="tagline"><%= slogan %></p>
-    <p class="event-date">September 1&ndash;4, </p>
+    <p class="event-date">September 1&ndash;4, 2027</p>
     <section class="countdown" aria-live="polite">
       <div class="time"><span id="d">0</span><small>Days</small></div>
       <div class="time"><span id="h">0</span><small>Hours</small></div>
@@ -43,142 +45,96 @@
 
 
 
-<section class="about" id="about">
+<section class="home-overview" id="about">
+  <div class="home-overview__mountains" aria-hidden="true"></div>
   <div class="wrap">
-    <h2>About Moroni's Quest</h2>
-    <p>Moroni’s Quest is an immersive youth camp engaging participants in the stories of the Book of Mormon through theatrical experiences, teamwork, and discipleship.</p>
-<section class="mq-about-banners">
+    <header class="home-overview__header">
+      <p class="home-overview__eyebrow">Abbotsford <span>•</span> Surrey <span>•</span> Vancouver Stakes</p>
+      <h2>Khalsa Centre at Miracle Valley</h2>
+      <p>Home of Moroni’s Quest</p>
+      <div class="home-overview__separator" aria-hidden="true"></div>
+    </header>
 
-  <article class="mq-banner" style="--bg:url('/img/banner_live.webp')">
-    <div class="mq-banner__content">
-      <h3><span class="accent-story">LIVE</span> THE STORY</h3>
-      <p>
-        Walk where heroes once stood—relive the faith, courage, and miracles of the scriptures.
-      </p>
-    </div>
-  </article>
-
-  <div class="mq-banner-divider">
-    <span></span>
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z"/>
-    </svg>
-    <span></span>
-  </div>
-
-  <article class="mq-banner" style="--bg:url('/img/banner_embrace.webp')">
-    <div class="mq-banner__content">
-      <h3><span class="accent-story">EMBRACE</span> YOUR FAMILY</h3>
-      <p>
-        Every quest starts with a family—serve, laugh, and overcome challenges together.
-      </p>
-    </div>
-  </article>
-
-  <div class="mq-banner-divider">
-    <span></span>
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z"/>
-    </svg>
-    <span></span>
-  </div>
-
-  <article class="mq-banner" style="--bg:url('/img/banner_deepen.webp')">
-    <div class="mq-banner__content">
-      <h3><span class="accent-story">DEEPEN</span> YOUR FAITH</h3>
-      <p>
-        As you relive the stories, find the Savior’s hand in your own.
-      </p>
-    </div>
-  </article>
-
-</section>
-  </div>
-</section>
-
-<section class="camp-details">
-
-  <div class="wrap">
-
-    <div class="camp-header">
-      <!--<img src="/img/TannerCampLogo.png" alt="Khalsa Center at Miracle Valley Logo" class="camp-logo" />-->
-      <div>
-        <h2>Khalsa Center at Miracle Valley</h2>
-        <p class="camp-tagline">
-          Home of Moroni’s Quest for the Abbotsford, Surrey, and Vancouver Stakes.
-        </p>
-      </div>
+    <div class="home-facts" aria-label="Event details">
+      <article class="home-fact">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        <div><h3>Location</h3><p>Khalsa Centre<br>14100 Stave Lake Road<br>Mission, BC V2V 0A5</p></div>
+      </article>
+      <article class="home-fact">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <div><h3>Dates</h3><p>September 1–4,<br>2027</p></div>
+      </article>
+      <article class="home-fact">
+        <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+        <div><h3>Who</h3><p>Youth turning 12 in 2027 through those graduating Grade 12 in 2027.</p></div>
+      </article>
+      <article class="home-fact">
+        <i class="fa-solid fa-coins" aria-hidden="true"></i>
+        <div><h3>Cost</h3><p>No cost for youth of the stake.</p></div>
+      </article>
     </div>
 
-    <div class="camp-grid">
+    <div class="home-details-grid">
+      <article class="home-info-card home-directions">
+        <header class="home-card-heading">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <div><h3>Getting There</h3><p>Find your way to Miracle Valley</p></div>
+        </header>
+        <div class="home-directions__body">
+          <div class="home-directions__copy">
+            <address><strong>Khalsa Centre</strong><br>14100 Stave Lake Road<br>Mission, BC V2V 0A5</address>
+            <a class="home-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=14100+Stave+Lake+Road+Mission+BC" target="_blank" rel="noopener">
+              <i class="fa-regular fa-map" aria-hidden="true"></i> Open in Google Maps <span aria-hidden="true">↗</span>
+            </a>
+            <p>When you arrive, look for the designated Moroni’s Quest drop-off area. Signs will guide you.</p>
+          </div>
+          <iframe class="home-map" title="Map showing Khalsa Centre at Miracle Valley" loading="lazy" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=14100 Stave Lake Road, Mission, BC V2V 0A5&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
+      </article>
 
-      <!-- Location + Map -->
-      <article class="camp-card">
-        <h3>Where</h3>
-        <p class="camp-location">
-          <span class="pin">📍</span>
-          Khalsa Centre<br />
-          14100 Stave Lake Road<br />
-          Mission, BC V2V 0A5
-        </p>
-
-
-
-        <div class="map-wrap">
-          <div class="mapouter">
-            <div class="gmap_canvas">
-              <iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=14100 Stave Lake Road, Mission, BC V2V 0A5&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-              <a href="https://embed-googlemap.com">embed-googlemap.com</a>
-            </div>
-            <style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}
-            </style>
+      <article class="home-info-card home-arrivals">
+        <header class="home-card-heading">
+          <i class="fa-regular fa-clock" aria-hidden="true"></i>
+          <div><h3>Arrival Times</h3><p>Wednesday, September 1</p></div>
+        </header>
+        <div class="home-leader-time">
+          <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+          <div><strong>Leader Check-in</strong><b>7:30 AM</b></div>
+          <span>Early check-in available</span>
+        </div>
+        <div class="home-youth-times">
+          <h4>Youth Check-in</h4>
+          <div class="home-youth-times__grid">
+            <div><span>Abbotsford Stake</span><strong>9:00 AM</strong></div>
+            <div><span>Surrey Stake</span><strong>9:20 AM</strong></div>
+            <div><span>Vancouver Stake</span><strong>9:40 AM</strong></div>
           </div>
         </div>
-        <p class="map-note">When you arrive look for the designated drop-off area.</p>
       </article>
+    </div>
 
-      <!-- When / Cost / Eligibility -->
-      <article class="camp-card">
-        <h3>When &amp; Who</h3>
-        <ul class="camp-list">
-          <li><strong>Dates:</strong> September 1–4, </li>
-         <li><strong>Leader Check-in:</strong> September 1 at 7:30 AM (previous-night check-in available)</li>
-          <li><strong>Youth Check-in: September 1</strong> 
-            <ul>
-              <li>Abbotsford Stake: 9:00 AM </li>
-              <li>Surrey Stake: 9:20 AM </li>
-              <li>Vancouver Stake: 9:40 AM </li>
-            </ul>
-          </li>
-          <li><strong>Cost:</strong> No cost for youth of the stake.</li>
-        </ul>
-        <h4>Eligibility</h4>
-        <p>Youth turning 12 in 2027 up to those graduating Grade 12 in 2027.</p>
-        <h4>Conduct</h4>
-        <p>All activities follow Church standards. We invite every youth to come ready to have fun, be kind, and help keep the Spirit of the camp.</p>
-        <img src="/img/youth3.jpg" alt="Youth at camp" class="camp-card-img"/>
+    <div class="home-expect">
+      <figure class="home-expect__photo">
+        <img src="/img/youth3.jpg" alt="Youth together at Moroni's Quest">
+      </figure>
+      <article class="home-expect__copy">
+        <header><h3>What to Expect</h3><p>Step into the Book of Mormon</p></header>
+        <p>Moroni’s Quest lets youth experience the Book of Mormon in a real and powerful way. Through scripture-based reenactments, tribe activities, challenges, and devotionals, youth will learn, serve, and build lasting friendships.</p>
+        <div class="home-expect__features">
+          <div><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Scripture-based reenactments</span></div>
+          <div><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>Stories, battles, and lessons from the Book of Mormon</span></div>
+          <div><i class="fa-solid fa-campground" aria-hidden="true"></i><span>Tribe activities and games</span></div>
+          <div><i class="fa-solid fa-fire" aria-hidden="true"></i><span>Evening activities and camping</span></div>
+          <div><i class="fa-solid fa-people-group" aria-hidden="true"></i><span>Discussions and devotionals</span></div>
+          <div><i class="fa-solid fa-heart" aria-hidden="true"></i><span>Build faith in Jesus Christ and lasting memories</span></div>
+        </div>
       </article>
+    </div>
 
-      <!-- Program Outline -->
-      <article class="camp-card">
-        <h3>What to Expect</h3>
-        <p>
-          Moroni’s Quest lets youth taste what it might have been like to live
-          in Book of Mormon times.
-        </p>
-        <ul class="camp-list">
-          <li>Scripture-based reenactments and dramatizations</li>
-          <li>Tribe activities, challenges, and games</li>
-          <li>Discussions and Devotionals</li>
-        </ul>
-        <p>During the day, youth are placed in tribes to experience stories, battles, and lessons from the Book of Mormon. </p>
-        <p>In the evenings, tribes remain together for activities and camping. Youth will sleep in dorm style accommodation (bunk style/double occupancy per room). Each youth will have their own bed, Youth may request one roommate of the same gender.</p>
-        <p>
-          Our goal is simple: build faith in Jesus Christ, deepen love for the
-          Book of Mormon, and create memories you’ll never forget.
-        </p>
-      </article>
-
+    <div class="home-bottom-cards">
+      <article><i class="fa-solid fa-bed" aria-hidden="true"></i><div><h3>Accommodations</h3><p>Youth will sleep in dorm-style accommodation with their own bed. Youth may request one roommate of the same gender.</p></div></article>
+      <article><i class="fa-solid fa-user" aria-hidden="true"></i><div><h3>Tribes</h3><p>Youth are placed in tribes to experience stories, battles, and lessons from the Book of Mormon.</p></div></article>
+      <article><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><div><h3>Conduct</h3><p>All activities follow Church standards. Come ready to have fun, be kind, and help keep the Spirit of the camp.</p></div></article>
     </div>
   </div>
 </section>

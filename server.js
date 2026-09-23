@@ -16,6 +16,7 @@ app.locals.title = process.env.SITE_TITLE || "Moroni’s Quest";
 app.locals.description = process.env.SITE_DESC || "Moroni’s Quest — Tri-Stake";
 app.locals.stake = process.env.STAKE_NAME || "Abbotsford, Surrey, and Vancouver Stakes";
 app.locals.campStartISO = process.env.CAMP_START_ISO || "2027-09-01T00:00:00-06:00";
+app.locals.campEndISO = process.env.CAMP_END_ISO || "2027-09-04T23:59:59-06:00";
 
 app.use(cors({
     origin: process.env.CLIENT_URL, // if you need multiple origins, use a function here
@@ -90,6 +91,17 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
     res.locals.user = req.session?.user || null;
+
+    const campStart = Date.parse(req.app.locals.campStartISO);
+    const campEnd = Date.parse(req.app.locals.campEndISO);
+    const arrivalBannerStart = campStart - (14 * 24 * 60 * 60 * 1000);
+    const now = Date.now();
+
+    res.locals.showArrivalBanner = Number.isFinite(campStart) &&
+        Number.isFinite(campEnd) &&
+        now >= arrivalBannerStart &&
+        now <= campEnd;
+
     next();
 });
 

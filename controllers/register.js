@@ -78,7 +78,7 @@ exports.submitRegistration = async (req, res) => {
             // terms/media (shared)
             terms_understood: req.body.terms_understood,
             media_consent_internal: req.body.media_consent_internal,
-            media_consent_external: req.body.media_consent_external,
+            media_consent_external: null,
             media_release_understood: req.body.media_release_understood,
 
             // completion (shared)

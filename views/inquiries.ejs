@@ -48,8 +48,10 @@
               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <% } %>
 
-            <!-- Time-to-submit trap -->
-            <input type="hidden" name="formLoadedAt" id="formLoadedAt" value="">
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
 
             <div class="row">
               <div class="field">
@@ -113,6 +115,21 @@
               <div class="hint">Please include any details that help us answer quickly.</div>
             </div>
 
+            <div class="field inquiry-verification">
+              <label for="verification">
+                Verification: What is <%= challengeQuestion %>? <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id="verification"
+                name="verification"
+                type="number"
+                inputmode="numeric"
+                required
+                autocomplete="off"
+              >
+              <div class="hint">This quick check helps us prevent automated junk messages.</div>
+            </div>
+
             <div class="actions">
               <button class="btn hero-btn" type="submit">Send message</button>
             </div>
@@ -142,14 +159,6 @@
     </div>
   </section>
 </main>
-
-<script>
-  // Set load timestamp for the "time to submit" spam check
-  (function () {
-    var el = document.getElementById('formLoadedAt');
-    if (el) el.value = String(Date.now());
-  })();
-</script>
 
 <%- include('partials/footer') %>
 <%- include('partials/foot') %>

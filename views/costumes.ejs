@@ -7,6 +7,7 @@
     <div class="overlay"></div>
     <header class="center hero__content">
       <h1>Costumes</h1>
+      <p class="tagline">Ancient style, modern comfort—no sewing degree required.</p>
       <div class="hero-actions">
         <a href="#inspiraton" class="hero-btn hero-btn--ghost">Inspiration</a>
         <a href="#guidelines" class="hero-btn hero-btn--ghost">Guidelines</a>
@@ -243,6 +244,7 @@
               <figure class="mq-carousel__slide">
                 <img src="/img/costumes/costume29.webp" alt="costume idea">
               </figure>
+            </div>
           </div>
 
           <button class="mq-carousel__btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
@@ -269,65 +271,56 @@
       <li><strong>Satchel provided:</strong> cross-body and large enough for scriptures, journal and writing supplies.</li>
     </ul>
 
-    <div class="costume-notes__rule">
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-      <span class="costume-notes__ruletxt">Fit &amp; layering</span>
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
+    <div class="costume-notes__grid">
+      <article class="costume-notes__column">
+        <header class="costume-notes__topic">
+          <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+          <h3>Fit &amp; Layering</h3>
+        </header>
+        <p>
+          Costumes should fall <strong>just below the knee</strong>. Small side slits are fine for movement—please
+          <strong>reinforce stitching</strong> since activities (including battle scenes) can be active.
+          Costumes should be <strong>loose enough to layer</strong> modest shorts and a t-shirt underneath, and roomier
+          still if you’ll wear pants on cool days.
+        </p>
+      </article>
+
+      <article class="costume-notes__column">
+        <header class="costume-notes__topic">
+          <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+          <h3>Color &amp; Fabric</h3>
+        </header>
+        <p>
+          Choose <strong>earth tones and natural colors</strong> (browns, tans, greens, blues). Woven-looking or subtle
+          striped fabrics work well. Please avoid <strong>neon or extra-bright colors</strong>, large distracting prints,
+          or bold florals. When in doubt, aim for <strong>plain and simple</strong>.
+        </p>
+        <p>
+          Simple sashes, tie belts, trims and contrasting fabric accents can add interest while keeping the look
+          <strong>period-appropriate and modest</strong>.
+        </p>
+      </article>
+
+      <article class="costume-notes__column">
+        <header class="costume-notes__topic">
+          <i class="fa-solid fa-hat-cowboy" aria-hidden="true"></i>
+          <h3>Head Coverings &amp; Footwear</h3>
+        </header>
+        <p>
+          A <strong>shepherd-style head covering</strong> is strongly recommended for sun protection.
+          Modern hats (ball caps, cowboy hats, toques, etc.) are not permitted.
+        </p>
+        <p>
+          Bring <strong>a pair of shoes or runners</strong>. You can also bring sandals that won’t easily come off.
+          <strong>No flip-flops.</strong>
+        </p>
+      </article>
     </div>
-
-    <p class="costume-notes__para">
-      Costumes should fall <strong>just below the knee</strong>. Small side slits are fine for movement—please
-      <strong>reinforce stitching</strong> since activities (including battle scenes) can be active.
-      Costumes should be <strong>loose enough to layer</strong> modest shorts and a t-shirt underneath, and roomier still
-      if you’ll wear pants on cool days.
-    </p>
-
-    <div class="costume-notes__rule">
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-      <span class="costume-notes__ruletxt">Color &amp; fabric</span>
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-    </div>
-
-    <p class="costume-notes__para">
-      Choose <strong>earth tones and natural colors</strong> (browns, tans, greens, blues). Woven-looking or subtle
-      striped fabrics work well. Please avoid <strong>neon or extra-bright colors</strong>, large distracting prints,
-      or bold florals. When in doubt, aim for <strong>plain and simple</strong>.
-    </p>
-
-    <div class="costume-notes__rule">
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-      <span class="costume-notes__ruletxt">Head coverings &amp; footwear</span>
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-    </div>
-
-    <p class="costume-notes__para">
-      A <strong>shepherd-style head covering</strong> is strongly recommended for sun protection.
-      Modern hats (ball caps, cowboy hats, toques, etc.) are not permitted.
-    </p>
-
-    <p class="costume-notes__para">
-      Bring <strong>a pair of shoes or runners</strong> you can also bring a pair of 
-      sandals that won’t easily come off. <strong>No flip-flops.</strong>
-    </p>
-
-    <div class="costume-notes__rule">
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-      <span class="costume-notes__ruletxt">Accessories &amp; inspiration</span>
-      <span class="costume-notes__ruleline" aria-hidden="true"></span>
-    </div>
-
-    <p class="costume-notes__para">
-      Have fun with simple accessories—sashes, tie belts, trims, buttons, or contrasting fabric accents—
-      while keeping the overall look <strong>period-appropriate and modest</strong>.
-      Inspiration can be found in Book of Mormon artwork, image searches, and Pinterest.
-    </p>
   </div>
 </section>
 
 
   <section id="tutorials" class="costume-videos">
-    <div id="color-block"></div>
-
     <div class="wrap">
       <div class="section-head">
         <h2>Costume Tutorials</h2>
@@ -368,6 +361,22 @@
 
 
 </main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Costume image preview" aria-hidden="true">
+  <div class="lightbox__backdrop" data-close></div>
+  <div class="lightbox__panel" role="document">
+    <button class="lightbox__close" type="button" data-close aria-label="Close image preview">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Previous costume image">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Next costume image">›</button>
+    <div class="lightbox__content">
+      <img id="lightboxImg" alt="">
+    </div>
+    <div class="lightbox__caption">
+      <span id="lightboxTitle"></span>
+      <a id="lightboxOpen" target="_blank" rel="noopener">Open full image ↗</a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>
 <%- include('partials/foot') %>
