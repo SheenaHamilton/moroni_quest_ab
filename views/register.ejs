@@ -322,23 +322,42 @@
 
                 <div class="form-group">
                   <label for="ward">Ward / Branch<span class="required">*</span></label>
-                  <select
-                    id="ward"
-                    name="ward"
-                    required
-                  >
+                  <select id="ward" name="ward" required>
                     <option value="" disabled <%= !v.ward ? 'selected' : '' %>>Choose</option>
-                    <option value="Clarkdale Ward" <%= sel('ward','Clarkdale Ward') %>>Clarkdale Ward</option>
-                    <option value="Cherry Grove Ward" <%= sel('ward','Cherry Grove Ward') %>>Cherry Grove Ward</option>
-                    <option value="Fort Saskatchewan Ward" <%= sel('ward','Fort Saskatchewan Ward') %>>Fort Saskatchewan Ward</option>
-                    <option value="Glen Allan Ward" <%= sel('ward','Glen Allan Ward') %>>Glen Allan Ward</option>
-                    <option value="Nottingham Ward" <%= sel('ward','Nottingham Ward') %>>Nottingham Ward</option>
-                    <option value="Wood Buffalo Ward" <%= sel('ward','Wood Buffalo Ward') %>>Wood Buffalo Ward</option>
-                    <option value="Lloydminster Branch" <%= sel('ward','Lloydminster Branch') %>>Lloydminster Branch</option>
-                    <option value="St. Paul Branch" <%= sel('ward','St. Paul Branch') %>>St. Paul Branch</option>
-                    <option value="Tofield Branch" <%= sel('ward','Tofield Branch') %>>Tofield Branch</option>
-                    <option value="Vermillion Branch" <%= sel('ward','Vermillion Branch') %>>Vermillion Branch</option>
-                  </select>
+
+                    <optgroup label="Abbotsford Stake">
+                      <option value="Clearbook Ward" <%= sel('ward','Clearbook Ward') %>>Clearbook Ward</option>
+                      <option value="Sumas Mountain Ward" <%= sel('ward','Sumas Mountain Ward') %>>Sumas Mountain Ward</option>
+                      <option value="Chilliwack 1st Ward" <%= sel('ward','Chilliwack 1st Ward') %>>Chilliwack 1st Ward</option>
+                      <option value="Chilliwack 2nd Ward" <%= sel('ward','Chilliwack 2nd Ward') %>>Chilliwack 2nd Ward</option>
+                      <option value="Maple Ridge Ward" <%= sel('ward','Maple Ridge Ward') %>>Maple Ridge Ward</option>
+                      <option value="Willoughby Ward" <%= sel('ward','Willoughby Ward') %>>Willoughby Ward</option>
+                    </optgroup>
+
+                    <optgroup label="Surrey Stake">
+                      <option value="Surrey 1st Ward" <%= sel('ward','Surrey 1st Ward') %>>Surrey 1st Ward</option>
+                      <option value="Surrey 2nd Ward (Spanish)" <%= sel('ward','Surrey 2nd Ward (Spanish)') %>>Surrey 2nd Ward (Spanish)</option>
+                      <option value="Surrey 4th Branch (Portuguese)" <%= sel('ward','Surrey 4th Branch (Portuguese)') %>>Surrey 4th Branch (Portuguese)</option>
+                      <option value="Surrey 5th Ward (Tagalog)" <%= sel('ward','Surrey 5th Ward (Tagalog)') %>>Surrey 5th Ward (Tagalog)</option>
+                      <option value="Richmond 1st Ward" <%= sel('ward','Richmond 1st Ward') %>>Richmond 1st Ward</option>
+                      <option value="Richmond 2nd Branch (Mandarin)" <%= sel('ward','Richmond 2nd Branch (Mandarin)') %>>Richmond 2nd Branch (Mandarin)</option>
+                      <option value="Delta Ward" <%= sel('ward','Delta Ward') %>>Delta Ward</option>
+                      <option value="Brookswood Ward" <%= sel('ward','Brookswood Ward') %>>Brookswood Ward</option>
+                    </optgroup>
+
+                    <optgroup label="Vancouver Stake">
+                      <option value="Vancouver 1st Ward" <%= sel('ward','Vancouver 1st Ward') %>>Vancouver 1st Ward</option>
+                      <option value="Vancouver 4th Ward (Spanish)" <%= sel('ward','Vancouver 4th Ward (Spanish)') %>>Vancouver 4th Ward (Spanish)</option>
+                      <option value="Burnaby Ward" <%= sel('ward','Burnaby Ward') %>>Burnaby Ward</option>
+                      <option value="Vancouver 5th Branch (Korean)" <%= sel('ward','Vancouver 5th Branch (Korean)') %>>Vancouver 5th Branch (Korean)</option>
+                      <option value="Vancouver Wah Yan Ward (Mandarin)" <%= sel('ward','Vancouver Wah Yan Ward (Mandarin)') %>>Vancouver Wah Yan Ward (Mandarin)</option>
+                      <option value="Coquitlam Ward" <%= sel('ward','Coquitlam Ward') %>>Coquitlam Ward</option>
+                      <option value="Port Coquitlam Ward" <%= sel('ward','Port Coquitlam Ward') %>>Port Coquitlam Ward</option>
+                      <option value="North Shore Ward" <%= sel('ward','North Shore Ward') %>>North Shore Ward</option>
+                      <option value="Sechelt Branch" <%= sel('ward','Sechelt Branch') %>>Sechelt Branch</option>
+                      <option value="Squamish Branch" <%= sel('ward','Squamish Branch') %>>Squamish Branch</option>
+                    </optgroup>
+                  </select> 
                 </div>
 
                 <!-- Address -->
