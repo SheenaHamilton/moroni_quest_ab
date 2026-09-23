@@ -353,7 +353,9 @@ registerValidation.checkRegistrationValidation = (req, res, next) => {
         const firstError = result.array({ onlyFirstError: true })[0];
 
         return res.status(400).render("register", {
+            activePage: "register",
             errorSummary: [firstError.msg], // ONE message only
+            errors: {},
             values: { ...req.body }         // keep values for later
         });
     }

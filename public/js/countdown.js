@@ -10,7 +10,7 @@
   // the shared footer, so other pages should stop after updating the year.
   if (!d || !h || !m || !s) return;
 
-  const startISO = window.CAMP_START_ISO || '2027-09-01T09:00:00-06:00';
+  const startISO = document.body.dataset.campStartIso || '2027-09-01T09:00:00-06:00';
   const start = new Date(startISO).getTime();
 
   function pad(n) { return String(n).padStart(2, '0'); }
