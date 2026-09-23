@@ -1,7 +1,7 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
 
-<main id="main" class="page">
+<main id="main" class="page page--prepare">
   <!-- Inner hero / page header -->
   <section class="hero hero--inner hero--prepare">
     <div class="overlay"></div>
@@ -11,8 +11,8 @@
 
       <div class="hero-actions">
         <a href="#packing" class="hero-btn hero-btn--ghost">Packing List</a>
-        <a href="#standards" class="hero-btn hero-btn--ghost">Standards</a>
-        <a href="#faq" class="hero-btn hero-btn--ghost">FAQ</a>
+        <a href="#standards" class="hero-btn hero-btn--ghost">Quest Standards</a>
+        <a href="#faq" class="hero-btn hero-btn--ghost">FAQs</a>
         <a href="#forms" class="hero-btn hero-btn--ghost">Forms</a>
       </div>
     </header>
@@ -20,36 +20,24 @@
 
   <!-- Prepare content -->
   <section id="prepare" class="prepare">
-      <div class="prepare-intro">
-        <div class="wrap">
-          <h2 class="prepare__title">Getting Ready for the Quest</h2>
-          <p class="intro">
-            Pack smart, review the standards, finish your forms, and prepare spiritually so you
-            can fully enjoy Moroni’s Quest.
-          </p>
-
-          <div class="reg-shield-divider">
-            <span class="shield-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
-                      fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
-              </svg>
-            </span>
-          </div>
-        </div>
-      </div>
-
     <!-- PACKING -->
-    <section id="packing" class="prepare-block">
+    <section id="packing" class="prepare-block page-mountain-intro">
       <div class="wrap">
-        <h3>Suggested Packing List</h3>
-        <p class="block-intro">
+        <header class="prepare-intro">
+          <span class="section-tag">Getting Ready for the Quest</span>
+          <h2 class="prepare__title page-intro-title">Pack for the Journey</h2>
+          <p class="intro page-intro-subtitle">Four days in another time still requires a few modern essentials.</p>
+          <div class="prepare-divider" aria-hidden="true"></div>
+        </header>
+
+        <p class="packing-note">
+          <i class="fa-solid fa-person-hiking packing-note__icon" aria-hidden="true"></i>
           Label everything. Plan for outdoor weather, active days, and cozy nights. We encourage youth and leaders to arrive in their Quest costume.
         </p>
 
-        <div class="prepare-grid">
+        <div class="prepare-grid packing-grid">
           <article>
-            <h4>Essentials</h4>
+            <header class="packing-card__header"><span class="packing-card__icon"><i class="fa-solid fa-bottle-water" aria-hidden="true"></i></span><h4>Essentials<small>Stay prepared</small></h4></header>
             <ul>
               <li>Water bottle (labeled)</li>
               <li>Flashlight or headlamp</li>
@@ -57,10 +45,13 @@
               <li>Insect Spray</li>
               <li>Personal medication. (inhalers, allergies etc.)</li>
             </ul>
+            <div class="packing-card__image">
+              <img src="/img/prepare-essentials.jpg" alt="Backpack, blanket, canteen, and lantern ready for the journey" loading="lazy" />
+            </div>
           </article>
 
           <article>
-            <h4>Clothing</h4>
+            <header class="packing-card__header"><span class="packing-card__icon"><i class="fa-solid fa-shirt" aria-hidden="true"></i></span><h4>Quest Wear<small>Dress for the journey</small></h4></header>
             <ul>
               <li>2 sets of Quest clothing.</li>
               <li>3 T-shirts</li>
@@ -79,10 +70,20 @@
           </article>
 
           <article>
-            <h4>Sleeping &amp; Hygiene</h4>
+            <header class="packing-card__header"><span class="packing-card__icon"><i class="fa-solid fa-tent" aria-hidden="true"></i></span><h4>Sleeping<small>Rest for adventure</small></h4></header>
             <ul>
               <li>Warm Sleeping bag</li>
               <li>Pillow</li>
+              <li>Pajamas</li>
+            </ul>
+            <div class="packing-card__image">
+              <img src="/img/prepare-sleeping.jpg" alt="Sleeping bag overlooking a mountain valley at sunrise" loading="lazy" />
+            </div>
+          </article>
+
+          <article>
+            <header class="packing-card__header"><span class="packing-card__icon"><i class="fa-solid fa-pump-soap" aria-hidden="true"></i></span><h4>Personal Care<small>Stay fresh</small></h4></header>
+            <ul>
               <li>Small toiletry bag</li>
               <li>Toothbrush and toothpaste</li>
               <li>Deodorant</li>
@@ -91,27 +92,30 @@
               <li>Comb, brush, mirror</li>
               <li>Feminine hygiene products</li>
             </ul>
+            <div class="packing-card__image">
+              <img src="/img/prepare-personal-care.jpg" alt="Leather toiletry bag, towels, soap, and grooming supplies" loading="lazy" />
+            </div>
           </article>
         </div>
 
-        <details class="prepare-details">
-          <summary><strong>What NOT to bring</strong></summary>
-          <ul>
-            <li>Electronics (speakers, gaming devices)</li>
-            <li>Valuables</li>
-            <li>open-blade knives or hatchets</li>
-            <li>Fireworks</li>
-            <li>Airsoft or Paintball guns</li>
-          </ul>
-        </details>
+        <div class="packing-actions">
+          <details class="prepare-details">
+            <summary><i class="fa-solid fa-ban" aria-hidden="true"></i><strong>What NOT to bring</strong></summary>
+            <ul>
+              <li>Electronics (speakers, gaming devices)</li>
+              <li>Valuables</li>
+              <li>Open-blade knives or hatchets</li>
+              <li>Fireworks</li>
+              <li>Airsoft or paintball guns</li>
+            </ul>
+          </details>
 
-        <% if (packingPdfUrl) { %>
-          <p class="prepare-actions">
-            <a class="hero-btn" href="<%= packingPdfUrl %>" download>
-              Download Full Packing List (PDF)
+          <% if (packingPdfUrl) { %>
+            <a class="hero-btn packing-download" href="<%= packingPdfUrl %>" download>
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Full Packing List (PDF)
             </a>
-          </p>
-        <% } %>
+          <% } %>
+        </div>
       </div>
     </section>
 
@@ -134,17 +138,17 @@
 
         <div class="prepare-grid standards-grid">
           <article>
-            <h4>Dress &amp; Appearance</h4>
+            <h4><i class="fa-solid fa-shirt" aria-hidden="true"></i> Dress &amp; Appearance</h4>
             <ul>
-              <li>Clothing suitable for active outdoor days.</li>
-              <li>Quest outfits worn throughtout the day.</li>
+              <li>Clothing for active outdoor days.</li>
+              <li>Quest outfits will be worn throughtout the day.</li>
               <li>Suitable footwear for walking/ziplining/activities. (Flip-flops only for free time)</li>
               <li>Layers for warmth and rain protection.</li>
             </ul>
           </article>
 
           <article>
-            <h4>Devices</h4>
+            <h4><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Devices</h4>
             <ul>
               <li>Electronics stay home unless directed by leaders</li>
               <li>Focus on the experience and your family group</li>
@@ -152,7 +156,7 @@
           </article>
 
           <article>
-            <h4>Conduct</h4>
+            <h4><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Conduct</h4>
             <ul>
               <li>Be respectful and inclusive</li>
               <li>Follow safety instructions</li>
@@ -166,8 +170,11 @@
 
     <!-- FAQ -->
     <section id="faq" class="prepare-block">
-      <div class="wrap">
-        <h3>FAQ</h3>
+      <div class="wrap faq-layout">
+        <header class="faq-heading">
+          <h3>Questions Before the Quest?</h3>
+          <p>We've probably got the answer.</p>
+        </header>
 
         <div class="prepare-faq">
           <details>
@@ -271,7 +278,7 @@
                 </svg>
               </span>
               <span class="shield-label">Packing List</span>
-              <span class="shield-download">⬇</span>
+              <i class="fa-solid fa-file-arrow-down shield-download" aria-hidden="true"></i>
             </a>
           <% } %>
         </div>

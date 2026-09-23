@@ -645,7 +645,62 @@ a {
 /* ===============================
    Footer
 ================================== */
-.footer { text-align: center; padding: 2rem; color: #c9c3b2; }
+.footer {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(220px, 24vw, 320px);
+  margin-top: -3.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem var(--container-pad) .2rem;
+  background-color: #f8f5ef;
+  background-image: url("/img/footer_mountain.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+  color: #f8f5ef;
+  text-align: center;
+}
+
+.footer__separator {
+  position: relative;
+  z-index: 1;
+  width: min(540px, 70vw);
+  height: 40px;
+  margin-bottom: .2rem;
+  background: url("/img/seperator-mountain.png") center / 100% auto no-repeat;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.footer__copyright {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  background: rgba(8, 25, 27, .72);
+  font-size: .85rem;
+  letter-spacing: .12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.footer__symbol {
+  color: var(--gold);
+}
+
+@media (max-width: 680px) {
+  .footer {
+    min-height: 240px;
+    margin-top: -1.5rem;
+  }
+}
 
 /* ===============================
    Sticky Header & Nav
@@ -824,7 +879,7 @@ body.nav-open { overflow: hidden; }
 }
 
 .hero--arriving {
-  background-image: url("/img/Dropoff.jpg");
+  background-image: url("/img/lehi_liahonalarge.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -845,12 +900,86 @@ body.nav-open { overflow: hidden; }
   text-align: center;
 }
 
+.arrival-time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 1.5rem auto 1rem;
+}
+
+.arrival-time-card {
+  padding: .5rem 2rem 1rem;
+}
+
+.arrival-time-card + .arrival-time-card {
+  border-left: 1px solid rgba(167, 125, 32, .75);
+}
+
+.arrival-time-card h2.page-intro-title {
+  width: 100%;
+  margin: 0 0 .8rem;
+  font-size: 1.55rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.arrival-schedule {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.arrival-schedule > div {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 1.25rem;
+}
+
+.arrival-schedule dt,
+.arrival-schedule dd {
+  margin: 0;
+}
+
+.arrival-schedule dt {
+  text-align: right;
+}
+
+.arrival-schedule dd {
+  font-weight: 700;
+  text-align: left;
+}
+
+.departure-time {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 .arriving-kicker {
   margin: 0 0 0.25rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.78rem;
+}
+
+@media (max-width: 680px) {
+  .arrival-time-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arrival-time-card {
+    padding-inline: .5rem;
+  }
+
+  .arrival-time-card + .arrival-time-card {
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(167, 125, 32, .75);
+    border-left: 0;
+  }
 }
 
 .arriving-intro h2 {
@@ -1056,22 +1185,68 @@ body.nav-open { overflow: hidden; }
 }
 
 .arrival-map {
-  margin: 2rem 0 0;
+  margin: 0;
   text-align: center;
 }
 
 .arrival-map img {
+  display: block;
   width: 100%;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+  border-radius: 12px;
+  border: 2px solid rgba(167, 125, 32, .75);
+  box-shadow: 0 10px 24px rgba(20, 38, 42, .18);
 }
 
-.arrival-map figcaption {
-  margin-top: 0.65rem;
-  color: var(--text);
+.dropoff-map-section {
+  padding: 3rem 0;
+  background: #f8f5ef;
+  color: #14262a;
+}
+
+.dropoff-map-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, .65fr) minmax(0, 1.5fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.dropoff-map-copy .section-tag {
+  color: #8d6820;
+  font-weight: 700;
+  letter-spacing: .3em;
+}
+
+.dropoff-map-copy h2 {
+  margin: .25rem 0 1rem;
+  color: #14262a;
+  font-family: Cinzel, serif;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.05;
+}
+
+.dropoff-map-copy address {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-style: normal;
   font-weight: 600;
-  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  line-height: 1.5;
+}
+
+.dropoff-map-copy p {
+  margin: 0;
+  color: #354144;
+  font-size: .95rem;
+}
+
+@media (max-width: 760px) {
+  .dropoff-map-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dropoff-map-copy {
+    text-align: center;
+  }
 }
 
 .arrival-faq details {
@@ -1353,26 +1528,19 @@ body.nav-open { overflow: hidden; }
 }
 
 .reg-shield-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
   margin: 1rem auto 1rem;
-  width: 100%;
-  max-width: 700px;
+  width: min(650px, 88vw);
+  height: 52px;
+  background: url("/img/seperator-mountain.png") center / 100% auto no-repeat;
 }
 
 .reg-shield-divider::before,
 .reg-shield-divider::after {
-  content: "";
-  flex: 1;
-  height: 2px;
-  background: #d2aa31;
-  border-radius: 2px;
+  content: none;
 }
 
-.shield-icon svg {
-  display: block;
+.reg-shield-divider .shield-icon {
+  display: none;
 }
 
 /* Slightly angled note */
@@ -1862,20 +2030,48 @@ button:disabled {
 }
 
 .prepare {
-  padding: 1rem 0rem 5rem;
+  padding: 0 0 0;
   background: #f8f5ef;
+  color: #14262a;
 }
 
 .prepare-intro {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .prepare__title {
   text-align: center;
   font-family: Cinzel, serif;
-  margin-bottom: 0.2rem;
-  color: var(--gold);
+  margin: .2rem 0 .15rem;
+  color: #14262a;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+}
+
+h2.page-intro-title {
+  margin: .2rem 0 .15rem;
+  color: #14262a;
+  font-family: Cinzel, serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.15rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+h2.page-intro-title + p.page-intro-subtitle {
+  max-width: 720px;
+  margin: .5rem auto 1rem;
+  color: var(--bg1);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: none;
+}
+
+.page-intro-separator {
+  margin-top: -.4rem;
 }
 
 .prepare .intro {
@@ -1885,11 +2081,12 @@ button:disabled {
   line-height: 1.6;
   color: var(--bg1);
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .prepare-block {
-  margin-bottom: 2.5rem;
+  margin-top: 0;
+  padding: 3rem 0;
 }
 
 .prepare-block h3 {
@@ -2034,7 +2231,7 @@ button:disabled {
 .hero--prepare {
   background-image: url("/img/enos-praying.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 42%;
 }
 
 .hero__content {
@@ -2044,6 +2241,8 @@ button:disabled {
 
 .hero__content h1 {
   font-family: Cinzel, serif;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1;
 }
 
 .hero-actions {
@@ -2172,10 +2371,25 @@ button:disabled {
 }
 
 #prepare #standards h4 {
-  color: var(--lightgold);
+  color: #fff;
+  font-family: Cinzel, serif;
+  font-size: 1.08rem;
   margin-top: 0;
   margin-bottom: 0.75rem;
+  text-transform: uppercase;
   text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
+
+#prepare #standards h4 i {
+  display: inline-grid;
+  width: 3rem;
+  height: 3rem;
+  margin-right: .65rem;
+  place-items: center;
+  color: var(--gold);
+  font-size: 2.15rem;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .section-tag {
@@ -2207,6 +2421,10 @@ button:disabled {
   margin-bottom: 0.3rem;
 }
 
+.standards-grid article ul li::marker {
+  color: var(--gold);
+}
+
 #prepare #standards::before {
   content: "";
   position: absolute;
@@ -2225,6 +2443,361 @@ button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   filter: grayscale(0.4);
+}
+
+/* Prepare page composition */
+.page--prepare {
+  background: #f8f5ef;
+}
+
+.page--prepare .hero--inner .center {
+  padding-top: 4rem;
+}
+
+.page--prepare .hero--inner .tagline {
+  margin: .45rem 0 0;
+}
+
+.page-mountain-intro {
+  position: relative;
+  overflow: hidden;
+  background: #f8f5ef;
+}
+
+.page-mountain-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 440px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(212, 175, 55, .08), transparent 28rem),
+    url("/img/backgroundmountain.png") center top / 112% auto no-repeat;
+  opacity: .58;
+  filter: brightness(1.08) saturate(.68);
+  -webkit-mask-image: radial-gradient(ellipse 90% 84% at 50% 38%, #000 42%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 84% at 50% 38%, #000 42%, transparent 100%);
+  pointer-events: none;
+}
+
+.page-mountain-intro > * {
+  position: relative;
+  z-index: 1;
+}
+
+.page-mountain-intro .section-tag {
+  color: #8d6820;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .35em;
+  text-align: center;
+}
+
+.prepare-divider {
+  width: min(650px, 88vw);
+  height: 52px;
+  margin: -.4rem auto 0;
+  background: url("/img/seperator-mountain.png") center / 100% auto no-repeat;
+}
+
+.packing-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  padding: .85rem 1.25rem;
+  border: 1px solid #c99b2c;
+  border-radius: 9px;
+  background: rgba(255, 252, 238, .9);
+  color: #172126;
+  line-height: 1.45;
+}
+
+.packing-note__icon {
+  flex: 0 0 auto;
+  width: 2.4rem;
+  color: #9e761d;
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.packing-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.packing-grid article {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(20, 38, 42, .18);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .68);
+  box-shadow: 0 5px 13px rgba(25, 31, 27, .12);
+}
+
+.packing-card__header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0 -1rem 1rem;
+  padding: .85rem 1rem;
+  min-height: 82px;
+  color: #fff;
+  background: linear-gradient(135deg, #203a3b, #10282d);
+}
+
+.packing-card__icon {
+  display: grid;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  color: #fff8df;
+  font-size: 2.15rem;
+}
+
+.packing-card__header h4 {
+  margin: 0;
+  font-family: Cinzel, serif;
+  line-height: 1.1;
+}
+
+.packing-card__header small {
+  display: block;
+  margin-top: .3rem;
+  font-family: Inter, sans-serif;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.packing-grid ul {
+  list-style: none;
+  padding-left: 1.25rem;
+  font-size: .9rem;
+  line-height: 1.4;
+}
+
+.packing-grid li {
+  position: relative;
+}
+
+.packing-grid li::before {
+  content: "✓";
+  position: absolute;
+  right: calc(100% + .4rem);
+  color: #a77d20;
+  font-weight: 800;
+}
+
+.packing-card__image {
+  position: relative;
+  height: 175px;
+  margin: auto -1rem -1rem;
+  overflow: hidden;
+}
+
+.packing-card__image::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .96), transparent);
+  pointer-events: none;
+}
+
+.packing-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.packing-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.packing-actions .prepare-details {
+  margin: 0;
+  padding: .7rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .45);
+  color: #172126;
+}
+
+.packing-actions .prepare-details ul {
+  margin-bottom: .25rem;
+}
+
+.packing-actions summary i {
+  margin-right: .65rem;
+  color: #a77d20;
+  font-size: 1.25rem;
+}
+
+.packing-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 46px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+#prepare #standards {
+  margin: 0;
+  padding: 3rem 0;
+}
+
+#prepare #standards h3 {
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+}
+
+#prepare #standards .block-intro {
+  max-width: 660px;
+}
+
+#prepare #standards .prepare-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#prepare #standards .prepare-grid article {
+  border-radius: 8px;
+}
+
+#faq {
+  background: #f8f5ef;
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, .85fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.faq-heading h3 {
+  margin: 0;
+  color: #14262a;
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.faq-heading p {
+  margin: .45rem 0 0;
+  color: #273438;
+}
+
+.prepare-faq details,
+.prepare-faq details + details {
+  margin: 0 0 .5rem;
+  padding: .7rem 1rem;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .52);
+  color: #172126;
+}
+
+.prepare-faq summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding-left: 2.25rem;
+  list-style: none;
+  font-weight: 600;
+}
+
+.prepare-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.prepare-faq summary::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border: 2px solid #a77d20;
+  border-radius: 50%;
+  color: #a77d20;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.prepare-faq details[open] summary::before {
+  content: "−";
+}
+
+.prepare-faq details p {
+  margin: .8rem 0 .2rem;
+  line-height: 1.55;
+}
+
+#forms {
+  padding-top: 1rem;
+  color: #172126;
+}
+
+@media (max-width: 900px) {
+  .packing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .page-mountain-intro::before {
+    height: 360px;
+    background-size: auto, auto 360px;
+    background-position: center top;
+  }
+
+  .page--prepare .hero--inner .center {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .hero-actions .hero-btn {
+    display: grid;
+    place-items: center;
+    padding-inline: .75rem;
+  }
+
+  .packing-grid,
+  #prepare #standards .prepare-grid,
+  .faq-layout,
+  .packing-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .packing-note {
+    align-items: flex-start;
+  }
+
+  .packing-download {
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .faq-layout {
+    gap: 1.5rem;
+  }
 }
 
 

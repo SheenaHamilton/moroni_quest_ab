@@ -24,23 +24,36 @@
     </header>
   </section>
 
-  <section class="arriving arriving-intro-section">
+  <section class="arriving arriving-intro-section page-mountain-intro">
     <div class="wrap">
 
       <div class="arriving-intro">
-        <h2>Arrival Window</h2>
-        <p class="arriving-kicker">Abbotsford Stake 9:00 AM · Surrey Stake 9:20 AM · Vancouver Stake 9:40 AM</p>
+        <span class="section-tag">Before you Set Out</span>
+        <h2 class="page-intro-title">Arrival & Departure</h2>
 
-        <h2 >Departure</h2>
-        <p class="arriving-kicker">Pickup September 4 between 10 AM and 11 AM</p>
-
-        <div class="reg-shield-divider">
+        <div class="reg-shield-divider page-intro-separator">
           <span class="shield-icon">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L4 5V11C4 16.52 7.84 20.74 12 22C16.16 20.74 20 16.52 20 11V5L12 2Z"
                     fill="#D2AA31" stroke="#D2AA31" stroke-width="1.5" />
             </svg>
           </span>
+        </div>
+
+        <div class="arrival-time-grid">
+          <article class="arrival-time-card">
+            <h2 class="page-intro-title">Arrival</h2>
+            <dl class="arrival-schedule">
+              <div><dt>Abbotsford Stake</dt><dd>9:00 AM</dd></div>
+              <div><dt>Surrey Stake</dt><dd>9:20 AM</dd></div>
+              <div><dt>Vancouver Stake</dt><dd>9:40 AM</dd></div>
+            </dl>
+          </article>
+
+          <article class="arrival-time-card">
+            <h2 class="page-intro-title">Departure</h2>
+            <p class="departure-time">Pickup September 4<br />between <strong>10:00 AM and 11:00 AM</strong></p>
+          </article>
         </div>
       </div>
 
@@ -124,28 +137,33 @@
             </p>
           </article>
         </div>
-
-        <div id="dropoff-map">
-          <figure class="arrival-map">
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Sara+%26+Eldon+Tanner+Youth+Camp%2C+5007+Lakeshore+Rd%2C+Wabamun%2C+AB+T0E+2K0&waypoints=53.578204,-114.640720&travelmode=driving"
-              target="_blank"
-              rel="noopener noreferrer">
-              <img
-                src="/img/Dropoff.jpg"
-                alt="Map showing the Moroni’s Quest arrival route, drop-off zone, and traffic flow"
-                loading="lazy">
-            </a>
-
-            <figcaption>
-              Tap the map to open Google Maps directions.
-            </figcaption>
-          </figure>
-        </div>
-
       </div>
     </div>
   </section>
+
+  <section id="dropoff-map" class="dropoff-map-section">
+    <div class="wrap dropoff-map-layout">
+      <header class="dropoff-map-copy">
+        <span class="section-tag">Find Your Way</span>
+        <h2>Drop-Off Map</h2>
+        <address>14100 Stave Lake Road,<br />Mission, BC</address>
+        <p>Tap the map for Google Maps directions. →</p>
+      </header>
+
+      <figure class="arrival-map">
+        <a
+          href="https://www.google.com/maps/dir/?api=1&amp;destination=14100+Stave+Lake+Road,+Mission,+BC"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img
+            src="/img/Dropoff.jpg"
+            alt="Map showing the Moroni’s Quest arrival route, drop-off zone, and traffic flow"
+            loading="lazy">
+        </a>
+      </figure>
+    </div>
+  </section>
+
   <section class="arriving">
     <div class="wrap">
 
