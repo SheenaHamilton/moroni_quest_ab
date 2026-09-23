@@ -1074,8 +1074,23 @@ main {
 
 @media (max-width: 680px) {
   .footer {
-    min-height: 240px;
-    margin-top: -1.5rem;
+    min-height: 260px;
+    margin-top: -1rem;
+    padding: 1rem .75rem .25rem;
+    background-size: auto 260px;
+    background-position: center bottom;
+  }
+
+  .footer__separator {
+    width: min(360px, 78vw);
+    height: 28px;
+    margin-bottom: 0;
+  }
+
+  .footer__copyright {
+    padding: .45rem .7rem;
+    font-size: .68rem;
+    letter-spacing: .08em;
   }
 }
 
