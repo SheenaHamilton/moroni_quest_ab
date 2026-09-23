@@ -6,6 +6,10 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
+  // The countdown only exists on the homepage. The script is loaded through
+  // the shared footer, so other pages should stop after updating the year.
+  if (!d || !h || !m || !s) return;
+
   const startISO = window.CAMP_START_ISO || '2027-09-01T09:00:00-06:00';
   const start = new Date(startISO).getTime();
 
