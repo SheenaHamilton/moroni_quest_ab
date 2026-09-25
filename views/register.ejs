@@ -58,7 +58,7 @@
     <div class="overlay"></div>
     <header class="center">
       <h1>Registration</h1>
-      <p class="tagline">Now Open • Help us plan (and sleep at night) — register ASAP</p>
+      <p class="tagline">Now Open • Help us plan — register ASAP</p>
     </header>
   </section>
 
@@ -110,8 +110,8 @@
           <li class="stepper__item">
             <div class="stepper__marker">4</div>
             <div class="stepper__body">
-              <h4>Watch for annoucements</h4>
-              <p>Keep an eye out for updates on Facebook or here for pre-Quest gatherings or important notices. </p>
+              <h4>Watch for announcements</h4>
+              <p>Keep an eye out for updates or important notices from us here or from your Ward and Stake leaders</p>
             </div>
           </li>
 
@@ -124,7 +124,7 @@
           </li>
         </ol>
         <div class="reg-note">
-          <p class="zeyada-regular">Can’t wait to see you at camp <br>— it’s going to be unforgettable!</p>
+          <p class="zeyada-regular">Can’t wait to see you at Quest <br>— it’s going to be unforgettable!</p>
         </div>
 
       </div>
@@ -149,15 +149,15 @@
               This registration includes participant information, parental permission, and the required medical release for those attending the Tri-Stake Moroni’s Quest, in accordance with guidelines from The Church of Jesus Christ of Latter-day Saints. 
             </p>
             <p class="reg-intro-strip__lead">
-              <strong>Moroni’s Quest will take place at Khalsa Center at Miracle Valley, beginning September 1 and concluding September 4.</strong>
+              <strong>Moroni’s Quest will take place at Khalsa Center at Miracle Valley, beginning Wednesday September 1st and concluding Saturday September 4th.</strong>
             </p>
             <p class="reg-intro-strip__lead">
               Digital registration allows leaders to securely access important information quickly during MQ events. Thank you for taking the time to complete this form and for helping us ensure we have the information and permissions needed to support a safe and meaningful experience for everyone involved.
             </p>
             <ul class="reg-intro-strip__bullets">
-              <li><strong>Who can register:</strong> Youth turning 12 in 2027 through Grade 12 (graduating 2027) in the <%= stake %>.</li>
+              <li><strong>Who can register:</strong> Youth turning 14 in 2027 through Grade 12 (graduating 2027) in the <%= stake %>.</li>
               <li><strong>Adult leaders:</strong> Register here too.</li>
-              <li><strong>Registration due:</strong>March 31, 2027.</li>
+              <li><strong>Registration due: </strong>April 30, 2027.</li>
             </ul>
           </div>
 
@@ -416,7 +416,7 @@
                     name="address_postal"
                     required
                     autocomplete="postal-code"
-                    placeholder="e.g. T8A 1A1"
+                    placeholder="e.g. V1M 1Z1"
                     value="<%= v.address_postal || '' %>"
                   />
                 </div>
@@ -455,7 +455,7 @@
                     name="emergency_contact_primary"
                     required
                     autocomplete="tel"
-                    placeholder="e.g. 403-555-1234"
+                    placeholder="e.g. 604-555-1234"
                     value="<%= v.emergency_contact_primary || '' %>"
                   />
                 </div>
@@ -941,7 +941,7 @@
                   <select id="role" name="role" required>
                     <option value="" disabled <%= !v.role ? 'selected' : '' %>>Select a role</option>
                     <option value="leader" <%= sel('role','leader') %>>Leader</option>
-                    <option value="imma_abba" <%= sel('role','youth-leader') %>>Imma / Abba</option>
+                    <option value="imma_abba" <%= sel('role','youth-leader') %>>Tribe Leader</option>
                     <option value="medical" <%= sel('role','medical') %>>Medical</option>
                     <option value="kitchen" <%= sel('role','kitchen') %>>Kitchen / Food Service</option>
                     <option value="security" <%= sel('role','security') %>>Security</option>

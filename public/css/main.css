@@ -1309,10 +1309,19 @@ body.nav-open { overflow: hidden; }
 
 .arrival-time-card h2.page-intro-title {
   width: 100%;
-  margin: 0 0 .8rem;
+  margin: 0 0 .2rem;
   font-size: 1.55rem;
   text-align: center;
   text-transform: uppercase;
+}
+
+.arrival-time-card .arrival-date {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #595959;
+  text-align: center;
 }
 
 .arrival-schedule {
